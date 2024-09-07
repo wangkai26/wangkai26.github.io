@@ -23,6 +23,13 @@
       <description>This is an example post. h1 demo1 国内实时新增用户反馈，请相关同事注意。22:53:03 用户ID：428501617627643904 用户邮箱：18970253829 app版本：COROS 3.1.6 手机型号：iPhone14,7 设备型号：COROS B20 设备ID：7A01F7 固件版本：V 3.04.0 问题描述：我的APEX</description>
     </item>
     <item>
+      <title>hugo使用title</title>
+      <link>https://wangkai26.github.io/posts/tech/hugo%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Fri, 02 Feb 2024 04:14:54 -0800</pubDate>
+      <guid>https://wangkai26.github.io/posts/tech/hugo%E4%BD%BF%E7%94%A8/</guid>
+      <description>流程： 在 quickstart 目录中为您的项目创建 目录结构。 hugo new site quickstart 将当前目录更改为项目的根目录。 cd quickstart 在当前目录中初始化一个空的 Git 仓库。 git init 启动 Hugo 的开发服务器以查看网站。 hugo server https://blog.csdn.net/p_function/article/details/103842298 https://www.emojiall.com/zh-hans/all-emojis https://bore.vip/archives/ca21a352/index.html https://www.shaohanyun.top/posts/env/blog_build2/ https://dvel.me/posts/hugo-papermod-config/#markdown-%e6%b8%b2%e6%9f%93%e9%a3%8e%e6%a0%bc Hugo 与 github page 关联 https://ratmomo.github.io/p/2024/06/%E4%BD%BF%E7%94%A8-hugo--github-pages-%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/ 安装hugo 创建项目 Hugo new PS D:\github-kai&amp;gt; hugo new site kai-blog Congratulations! Your new Hugo site was created in D:\github-kai\kai-blog. Just a few more steps&amp;hellip; Change the current directory to D:\github-kai\kai-blog. Create or install a theme: Create a new theme with the command &amp;ldquo;hugo</description>
+    </item>
+    <item>
       <title>正则表达式理论</title>
       <link>https://wangkai26.github.io/posts/tech/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%90%86%E8%AE%BA/</link>
       <pubDate>Fri, 02 Feb 2024 04:14:54 -0800</pubDate>
@@ -42,13 +49,6 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://wangkai26.github.io/posts/tech/git%E5%9F%BA%E7%A1%80/</guid>
       <description></description>
-    </item>
-    <item>
-      <title></title>
-      <link>https://wangkai26.github.io/posts/tech/hugo%E4%BD%BF%E7%94%A8/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://wangkai26.github.io/posts/tech/hugo%E4%BD%BF%E7%94%A8/</guid>
-      <description>流程： 在 quickstart 目录中为您的项目创建 目录结构。 hugo new site quickstart 将当前目录更改为项目的根目录。 cd quickstart 在当前目录中初始化一个空的 Git 仓库。 git init 启动 Hugo 的开发服务器以查看网站。 hugo server https://blog.csdn.net/p_function/article/details/103842298 https://www.emojiall.com/zh-hans/all-emojis https://bore.vip/archives/ca21a352/index.html https://www.shaohanyun.top/posts/env/blog_build2/ https://dvel.me/posts/hugo-papermod-config/#markdown-%e6%b8%b2%e6%9f%93%e9%a3%8e%e6%a0%bc Hugo 与 github page 关联 https://ratmomo.github.io/p/2024/06/%E4%BD%BF%E7%94%A8-hugo--github-pages-%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/ 安装hugo 创建项目 Hugo new PS D:\github-kai&amp;gt; hugo new site kai-blog Congratulations! Your new Hugo site was created in D:\github-kai\kai-blog. Just a few more steps&amp;hellip; Change the current directory to D:\github-kai\kai-blog. Create or install a theme: Create a new theme with the command &amp;ldquo;hugo</description>
     </item>
     <item>
       <title></title>
