@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>编码 | Kai&#39;s Blog</title>
+<meta name="keywords" content="标签1">
+<meta name="description" content="请帮我分析一段代码，代码如下： 1 2 3 4 5 6 with open(filename, &#39;rb&#39;) as fp: ff=fp.read() # print(ff) hexstr = binascii.b2a_hex(ff).decode() print(hexstr) ff 是我读取到的内容，直接打印 ff 会得到 二进制数据，通过 binascii.b2a_hex(ff).decode() 会得到十六进制字符串">
+<meta name="author" content="kai">
+<link rel="canonical" href="https://wangkai26.github.io/posts/tools/%E7%BC%96%E7%A0%81/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.af426310e146b199cc19c33acd2cd52502983e6f8cd40d5af80a041bf9ad8ee0.css" integrity="sha256-r0JjEOFGsZnMGcM6zSzVJQKYPm&#43;M1A1a&#43;AoEG/mtjuA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://wangkai26.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://wangkai26.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://wangkai26.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://wangkai26.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://wangkai26.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="zh" href="https://wangkai26.github.io/posts/tools/%E7%BC%96%E7%A0%81/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+  
+
+<meta property="og:title" content="编码" />
+<meta property="og:description" content="请帮我分析一段代码，代码如下： 1 2 3 4 5 6 with open(filename, &#39;rb&#39;) as fp: ff=fp.read() # print(ff) hexstr = binascii.b2a_hex(ff).decode() print(hexstr) ff 是我读取到的内容，直接打印 ff 会得到 二进制数据，通过 binascii.b2a_hex(ff).decode() 会得到十六进制字符串" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://wangkai26.github.io/posts/tools/%E7%BC%96%E7%A0%81/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-10-09T21:54:18+08:00" />
+<meta property="article:modified_time" content="2024-10-09T21:54:18+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="编码"/>
+<meta name="twitter:description" content="请帮我分析一段代码，代码如下： 1 2 3 4 5 6 with open(filename, &#39;rb&#39;) as fp: ff=fp.read() # print(ff) hexstr = binascii.b2a_hex(ff).decode() print(hexstr) ff 是我读取到的内容，直接打印 ff 会得到 二进制数据，通过 binascii.b2a_hex(ff).decode() 会得到十六进制字符串"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://wangkai26.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Tools 编程工具",
+      "item": "https://wangkai26.github.io/posts/tools/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "编码",
+      "item": "https://wangkai26.github.io/posts/tools/%E7%BC%96%E7%A0%81/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "编码",
+  "name": "编码",
+  "description": "请帮我分析一段代码，代码如下： 1 2 3 4 5 6 with open(filename, \u0026#39;rb\u0026#39;) as fp: ff=fp.read() # print(ff) hexstr = binascii.b2a_hex(ff).decode() print(hexstr) ff 是我读取到的内容，直接打印 ff 会得到 二进制数据，通过 binascii.b2a_hex(ff).decode() 会得到十六进制字符串",
+  "keywords": [
+    "标签1"
+  ],
+  "articleBody": "请帮我分析一段代码，代码如下：\n1 2 3 4 5 6 with open(filename, 'rb') as fp: ff=fp.read() # print(ff) hexstr = binascii.b2a_hex(ff).decode() print(hexstr) ff 是我读取到的内容，直接打印 ff 会得到 二进制数据，通过 binascii.b2a_hex(ff).decode() 会得到十六进制字符串，请帮我分析下，原文件的内容是什么格式的数据，二进制吗？binascii.b2a_hex(ff).decode() 就是把二进制数据转换成十六进制？怎么转换，请具体描述这个过程\n在这段代码中，with open(filename, 'rb') as fp 用于以二进制模式打开一个文件，这意味着你读取到的内容是以字节（byte）的形式存在的，因此 ff 是一个包含字节数据的二进制对象。\nbinascii.b2a_hex(ff) 是将这些字节数据转换为它们的十六进制表示形式。具体而言，这个函数会将每个字节（8位）转换为两个十六进制字符（每个字符占4位）。举个简单的例子，假设你的字节是 0xAB，它的十六进制表示就是 'ab'。每个字节被转化成两个字符后，所有字符连接在一起就得到了一个完整的十六进制字符串。\n在 binascii.b2a_hex(ff).decode() 中，.decode() 被用来将这个字节串转换成一个普通的Python字符串对象，它默认使用UTF-8进行解码。这样你就可以用print(hexstr)来查看这个可读的十六进制字符串。\n总结一下，这个过程是将文件中的二进制字节数据转换为一个可读的十六进制字符串表示，方便进行查看和进一步处理。\npython中还能用什么函数实现一样的功能呢？将二进制数据转换为十六进制字符串\n在Python中，将二进制数据转换为十六进制字符串，有多种方式可以实现，除了使用binascii.b2a_hex，这里有几个常用的方法：\n使用hex()方法（仅适用于bytes对象）：\n1 hexstr = ff.hex() 使用binascii.hexlify：\n1 2 import binascii hexstr = binascii.hexlify(ff).decode() 使用format与字符串格式化：\n1 hexstr = ''.join(format(byte, '02x') for byte in ff) 使用codecs模块的encode函数：\n1 2 import codecs hexstr = codecs.encode(ff, 'hex').decode() 这些方法都可以实现二进制数据到十六进制字符串的转换功能。选择使用哪种方法可以根据个人的代码习惯或者项目的具体需求，只要能够正确得到预期的结果即可。\n问题：.decode() 被用来将这个字节串转换成一个普通的Python字符串对象 请再详细讲下上面这句话，我不太明白 我打印 没有 decode 和 decode 的数据，感觉打印结果就是差了一个 b’’，如下： b'484600‘ 484600\nAI\n在Python中，字符串有两种主要形式：字节串（bytes）和字符串对象（通常指文本字符串，str）。\n字节串（bytes）： 以 b'' 前缀表示。 适合处理二进制数据，如文件、网络数据等。 每个元素是一个字节，数值范围在0到255之间。 字符串对象（str）： 以 '' 表示。 用于处理文本数据，支持多种编码形式。 是Python中常用的字符串格式，适合大多数文本处理任务。 在你提到的代码中，binascii.hexlify(ff) 或 binascii.b2a_hex(ff) 返回的是一个字节串，因为这些函数返回的结果是原始的二进制数据的十六进制表示，它仍然是以字节格式存在的，因此会用b''表现出来。\n.decode() 方法的作用就是将这个字节串按照指定的编码（默认是 ‘utf-8’）解码成一个标准的Python字符串对象（str）。这样，b'484600' 就变成了 '484600'，去掉了 b''，使得字符串更符合日常的文本处理与查看。\n所以，decode() 的作用是把从二进制数据表示（字节串）转换为文本表示（普通字符串），这通常也是为了更方便的进行文本处理和输出。\n问题：在Python中，字符串有两种主要形式：字节串（bytes）和字符串对象（通常指文本字符串，str） 这句话我不理解，都说了字符串了，怎么还包含字节串的形式呢\nAI\n在Python中，虽然我们通常把\"字符串\"用来指代文本字符串，但是在处理不同类型数据时，需要区分字节串（bytes）和文本字符串（str）。这两者都可以用来表示字符串数据，但它们的用途和表现形式有所不同。\n文本字符串（str）： 用来处理文本数据。 是Python中默认的字符串类型。 支持多种字符编码（如UTF-8、UTF-16等），是一种Unicode字符串。 通常用于表示和处理人类可读的文本。 字节串（bytes）： 专门用来处理二进制数据。 以 b'' 前缀表示。例： b'hello' 其元素是字节数据（整数值范围从0到255）。 通常用于网络通信、文件读写或者加密操作等需要原始二进制数据的场合。 这两种形式的区别很重要，因为它们用于不同的场合：\n使用文本字符串（str）处理文本，如打印输出、显示用户界面文本、文本解析等。 使用字节串（bytes）处理二进制数据，如传输字节流、处理编码数据、网络通信等。 当需要在这两者之间转换时，可以使用 .encode() 将文本字符串转换为字节串，用 .decode() 将字节串转换为文本字符串。这两种类型的分离是因为在处理国际化、网络通信、文件格式等时，对二进制和文本进行明确的区分是很重要的。\n",
+  "wordCount" : "1944",
+  "inLanguage": "zh",
+  "datePublished": "2024-10-09T21:54:18+08:00",
+  "dateModified": "2024-10-09T21:54:18+08:00",
+  "author":[{
+    "@type": "Person",
+    "name": "kai"
+  }],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://wangkai26.github.io/posts/tools/%E7%BC%96%E7%A0%81/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kai's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://wangkai26.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://wangkai26.github.io/" accesskey="h" title="Kai&#39;s Blog (Alt + H)">Kai&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://wangkai26.github.io/search" title="🔍搜索 (Alt &#43; /)" accesskey=/>
+                    <span>🔍搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://wangkai26.github.io/" title="🏠主页">
+                    <span>🏠主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://wangkai26.github.io/posts" title="📚文章">
+                    <span>📚文章</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://wangkai26.github.io/archives/" title="⏱时间轴">
+                    <span>⏱时间轴</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://wangkai26.github.io/tags" title="🔖标签">
+                    <span>🔖标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://wangkai26.github.io/about" title="🙋🏻‍♂️关于">
+                    <span>🙋🏻‍♂️关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://wangkai26.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://wangkai26.github.io/posts/">Posts</a>&nbsp;»&nbsp;<a href="https://wangkai26.github.io/posts/tools/">Tools 编程工具</a></div>
+    <h1 class="post-title entry-hint-parent">
+      编码
+    </h1>
+    <div class="post-meta"><span title='2024-10-09 21:54:18 +0800 CST'>2024-10-09</span>&nbsp;·&nbsp;4 分钟&nbsp;·&nbsp;kai
+
+</div>
+  </header> 
+  <div class="post-content"><p>请帮我分析一段代码，代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ff</span><span class="o">=</span><span class="n">fp</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># print(ff)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">hexstr</span> <span class="o">=</span> <span class="n">binascii</span><span class="o">.</span><span class="n">b2a_hex</span><span class="p">(</span><span class="n">ff</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">hexstr</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>ff 是我读取到的内容，直接打印 ff 会得到 二进制数据，通过 binascii.b2a_hex(ff).decode() 会得到十六进制字符串，请帮我分析下，原文件的内容是什么格式的数据，二进制吗？binascii.b2a_hex(ff).decode() 就是把二进制数据转换成十六进制？怎么转换，请具体描述这个过程</p>
+<blockquote>
+<p>在这段代码中，<code>with open(filename, 'rb') as fp</code> 用于以二进制模式打开一个文件，这意味着你读取到的内容是以字节（byte）的形式存在的，因此 <code>ff</code> 是一个包含字节数据的二进制对象。</p>
+<p><code>binascii.b2a_hex(ff)</code> 是将这些字节数据转换为它们的十六进制表示形式。具体而言，这个函数会将每个字节（8位）转换为两个十六进制字符（每个字符占4位）。举个简单的例子，假设你的字节是 <code>0xAB</code>，它的十六进制表示就是 <code>'ab'</code>。每个字节被转化成两个字符后，所有字符连接在一起就得到了一个完整的十六进制字符串。</p>
+<p>在 <code>binascii.b2a_hex(ff).decode()</code> 中，<code>.decode()</code> 被用来将这个字节串转换成一个普通的Python字符串对象，它默认使用UTF-8进行解码。这样你就可以用<code>print(hexstr)</code>来查看这个可读的十六进制字符串。</p>
+<p>总结一下，这个过程是将文件中的二进制字节数据转换为一个可读的十六进制字符串表示，方便进行查看和进一步处理。</p>
+</blockquote>
+<p>python中还能用什么函数实现一样的功能呢？将二进制数据转换为十六进制字符串</p>
+<p>在Python中，将二进制数据转换为十六进制字符串，有多种方式可以实现，除了使用<code>binascii.b2a_hex</code>，这里有几个常用的方法：</p>
+<ol>
+<li>
+<p><strong>使用<code>hex()</code>方法</strong>（仅适用于<code>bytes</code>对象）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">hexstr</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>使用<code>binascii.hexlify</code></strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">binascii</span>
+</span></span><span class="line"><span class="cl"><span class="n">hexstr</span> <span class="o">=</span> <span class="n">binascii</span><span class="o">.</span><span class="n">hexlify</span><span class="p">(</span><span class="n">ff</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>使用<code>format</code>与字符串格式化</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">hexstr</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="n">byte</span><span class="p">,</span> <span class="s1">&#39;02x&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">byte</span> <span class="ow">in</span> <span class="n">ff</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>使用<code>codecs</code>模块的<code>encode</code>函数</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">codecs</span>
+</span></span><span class="line"><span class="cl"><span class="n">hexstr</span> <span class="o">=</span> <span class="n">codecs</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">ff</span><span class="p">,</span> <span class="s1">&#39;hex&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<p>这些方法都可以实现二进制数据到十六进制字符串的转换功能。选择使用哪种方法可以根据个人的代码习惯或者项目的具体需求，只要能够正确得到预期的结果即可。</p>
+<p>问题：.decode() 被用来将这个字节串转换成一个普通的Python字符串对象 请再详细讲下上面这句话，我不太明白 我打印 没有 decode 和 decode 的数据，感觉打印结果就是差了一个 b&rsquo;&rsquo;，如下： b'484600‘ 484600</p>
+<p>AI</p>
+<p>在Python中，字符串有两种主要形式：字节串（bytes）和字符串对象（通常指文本字符串，str）。</p>
+<ol>
+<li><strong>字节串（bytes）</strong>：
+<ul>
+<li>以 <code>b''</code> 前缀表示。</li>
+<li>适合处理二进制数据，如文件、网络数据等。</li>
+<li>每个元素是一个字节，数值范围在0到255之间。</li>
+</ul>
+</li>
+<li><strong>字符串对象（str）</strong>：
+<ul>
+<li>以 <code>''</code> 表示。</li>
+<li>用于处理文本数据，支持多种编码形式。</li>
+<li>是Python中常用的字符串格式，适合大多数文本处理任务。</li>
+</ul>
+</li>
+</ol>
+<p>在你提到的代码中，<code>binascii.hexlify(ff)</code> 或 <code>binascii.b2a_hex(ff)</code> 返回的是一个字节串，因为这些函数返回的结果是原始的二进制数据的十六进制表示，它仍然是以字节格式存在的，因此会用<code>b''</code>表现出来。</p>
+<p><code>.decode()</code> 方法的作用就是将这个字节串按照指定的编码（默认是 &lsquo;utf-8&rsquo;）解码成一个标准的Python字符串对象（str）。这样，<code>b'484600'</code> 就变成了 <code>'484600'</code>，去掉了 <code>b''</code>，使得字符串更符合日常的文本处理与查看。</p>
+<p>所以，decode() 的作用是把从二进制数据表示（字节串）转换为文本表示（普通字符串），这通常也是为了更方便的进行文本处理和输出。</p>
+<p>问题：在Python中，字符串有两种主要形式：字节串（bytes）和字符串对象（通常指文本字符串，str） 这句话我不理解，都说了字符串了，怎么还包含字节串的形式呢</p>
+<p>AI</p>
+<p>在Python中，虽然我们通常把&quot;字符串&quot;用来指代文本字符串，但是在处理不同类型数据时，需要区分字节串（bytes）和文本字符串（str）。这两者都可以用来表示字符串数据，但它们的用途和表现形式有所不同。</p>
+<ol>
+<li><strong>文本字符串（str）</strong>：
+<ul>
+<li>用来处理文本数据。</li>
+<li>是Python中默认的字符串类型。</li>
+<li>支持多种字符编码（如UTF-8、UTF-16等），是一种Unicode字符串。</li>
+<li>通常用于表示和处理人类可读的文本。</li>
+</ul>
+</li>
+<li><strong>字节串（bytes）</strong>：
+<ul>
+<li>专门用来处理二进制数据。</li>
+<li>以 <code>b''</code> 前缀表示。例： <code>b'hello'</code></li>
+<li>其元素是字节数据（整数值范围从0到255）。</li>
+<li>通常用于网络通信、文件读写或者加密操作等需要原始二进制数据的场合。</li>
+</ul>
+</li>
+</ol>
+<p>这两种形式的区别很重要，因为它们用于不同的场合：</p>
+<ul>
+<li>使用文本字符串（str）处理文本，如打印输出、显示用户界面文本、文本解析等。</li>
+<li>使用字节串（bytes）处理二进制数据，如传输字节流、处理编码数据、网络通信等。</li>
+</ul>
+<p>当需要在这两者之间转换时，可以使用 <code>.encode()</code> 将文本字符串转换为字节串，用 <code>.decode()</code> 将字节串转换为文本字符串。这两种类型的分离是因为在处理国际化、网络通信、文件格式等时，对二进制和文本进行明确的区分是很重要的。</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://wangkai26.github.io/tags/%E6%A0%87%E7%AD%BE1/">标签1</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://wangkai26.github.io/posts/front_end/js%E5%9F%BA%E7%A1%80/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>Js基础</span>
+  </a>
+  <a class="next" href="https://wangkai26.github.io/posts/tools/vscode/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>Vscode</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="https://wangkai26.github.io/">Kai&#39;s Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>VSCode连接linux,配置zsh&#43;p10k终端,踩坑经验 | Kai&#39;s Blog</title>
+<meta name="keywords" content="linux, zsh">
+<meta name="description" content="本地环境：win10 &#43; VSCode，使用 database 插件，ssh 连接服务器 为了配置这个网上看起来比较漂亮的终端，踩了一些坑，来来回回搞了快 5 个小时才搞">
+<meta name="author" content="kai">
+<link rel="canonical" href="https://wangkai26.github.io/posts/tech/linux/zsh/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.af426310e146b199cc19c33acd2cd52502983e6f8cd40d5af80a041bf9ad8ee0.css" integrity="sha256-r0JjEOFGsZnMGcM6zSzVJQKYPm&#43;M1A1a&#43;AoEG/mtjuA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://wangkai26.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://wangkai26.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://wangkai26.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://wangkai26.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://wangkai26.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="zh" href="https://wangkai26.github.io/posts/tech/linux/zsh/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+  
+
+<meta property="og:title" content="VSCode连接linux,配置zsh&#43;p10k终端,踩坑经验" />
+<meta property="og:description" content="本地环境：win10 &#43; VSCode，使用 database 插件，ssh 连接服务器 为了配置这个网上看起来比较漂亮的终端，踩了一些坑，来来回回搞了快 5 个小时才搞" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://wangkai26.github.io/posts/tech/linux/zsh/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-09-17T15:36:43+08:00" />
+<meta property="article:modified_time" content="2024-09-17T15:36:43+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="VSCode连接linux,配置zsh&#43;p10k终端,踩坑经验"/>
+<meta name="twitter:description" content="本地环境：win10 &#43; VSCode，使用 database 插件，ssh 连接服务器 为了配置这个网上看起来比较漂亮的终端，踩了一些坑，来来回回搞了快 5 个小时才搞"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://wangkai26.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "📚文章",
+      "item": "https://wangkai26.github.io/posts/tech/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "VSCode连接linux,配置zsh+p10k终端,踩坑经验",
+      "item": "https://wangkai26.github.io/posts/tech/linux/zsh/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "VSCode连接linux,配置zsh+p10k终端,踩坑经验",
+  "name": "VSCode连接linux,配置zsh\u002bp10k终端,踩坑经验",
+  "description": "本地环境：win10 + VSCode，使用 database 插件，ssh 连接服务器 为了配置这个网上看起来比较漂亮的终端，踩了一些坑，来来回回搞了快 5 个小时才搞",
+  "keywords": [
+    "linux", "zsh"
+  ],
+  "articleBody": "本地环境：win10 + VSCode，使用 database 插件，ssh 连接服务器\n为了配置这个网上看起来比较漂亮的终端，踩了一些坑，来来回回搞了快 5 个小时才搞好，这里分享下经验。\n主要流程：\n安装zsh 安装 p10k 安装 Oh-My-Zsh 安装 Nerd 字体 配置文件 zshrc 配置 p10k 一、安装zsh 可以输入 echo $SHELL 查看当前使用的 shell\n1 2 ubuntu@VM-12-2-ubuntu:~$ echo $SHELL /bin/bash cat /etc/shells 查看支持的shell\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 ubuntu@VM-12-2-ubuntu:~$ cat /etc/shells # /etc/shells: valid login shells /bin/sh /bin/bash /usr/bin/bash /bin/rbash /usr/bin/rbash /usr/bin/sh /bin/dash /usr/bin/dash /usr/bin/tmux /usr/bin/screen /bin/zsh /usr/bin/zsh 因为我已经安装了 zsh，所以已经有了 zsh\nzsh 的安装\n1 sudo apt install wget git curl vim -y 安装后，会有系统内核升级的提示，一路按回车\n安装好后后再使用 cat 查看系统支持的shell，会看到比刚才多了 zsh，这样 zsh 的安装就完成了\n然后，将系统默认shell 切换为 zsh\n1 chsh -s $(which zsh) 二、安装 p10k 1 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k 国内用户可以放心使用下面 http://gitee.com 上的官方镜像加速下载.\n1 git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git ~/powerlevel10k 推荐同时下载另外两个插件\n1 2 3 4 # zsh-autosuggestions自动提示插件 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions # zsh-syntax-highlighting语法高亮插件 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting 三、安装 Oh-My-Zsh 执行语句；\n1 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k 中国用户可以使用 http://gitee.com 上的官方镜像加速下载.\n1 git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k 四、安装 Nerd 字体 由于我是在 win10 系统下，使用 VSCode 连接服务器的，我在电脑安装并在 VSCode 配置字体就可以了\n如果不安装，会类似下图，有未知符号\nPowerlevel10k不需要自定义字体，但如果有的话可以利用它们。它可以很好地与Nerd Fonts, Source Code Pro, Font Awesome, Powerline，甚至默认的系统字体配合使用。只有在使用Nerd字体时，才能使用完整的样式选项。推荐字体:为Powerlevel10k修补的Meslo Nerd字体。\n直接点击下面四个链接下载 ttf 文件并安装，官方链接\nMesloLGS NF Regular.ttf MesloLGS NF Bold.ttf MesloLGS NF Italic.ttf MesloLGS NF Bold Italic.ttf 安装好后，在 VSCode 设置中输入 editor.font 找到 Font Family，设置为 MesloLGS NF 即可。\n2024/9/24 更新，修改 Font Family 会一起修改编辑器中代码的字体，可以在设置中输入 terminal.integrated.font，设为 MesloLGS NF，同样会生效\n五、配置文件 zshrc 修改以下两点即可，启动插件和主题，git 是默认启用的，主要添加后面两个\n1 2 3 4 5 6 7 8 9 # 修改主题 ZSH_THEME=\"powerlevel10k/powerlevel10k\" # 启用插件 plugins=( git zsh-autosuggestions zsh-syntax-highlighting ) 六、配置 p10k 输入以下命令即可配置 p10k，\n1 p10k configure 这里有一个很大的坑，我配置过程中，总是跳过最关键的 prompt style 这一步，导致我无法设置我最想要的 rainbow 效果\n需要终端输入以下命令，将终端配置支持 24 位真彩色（这里我浪费了很多时间）\n1 export TERM=\"xterm-256color\" 然后再执行 p10k configure，就会有 prompt style 选项了。\n如果想重新配置，再次输入下面命令即可\n1 p10k configure 到此为止终于完成了！\n参考链接：\nromkatv/powerlevel10k: A Zsh theme (github.com) 在windows中ohmyzsh 的powerlevel10k主题及插件推荐_powerlevel10k 字体下载-CSDN博客 利用zsh+oh-my-zsh+powerlevel10k为Linux终端配置一个漂亮的shell_zsh powerlevel10k-CSDN博客 ",
+  "wordCount" : "1169",
+  "inLanguage": "zh",
+  "datePublished": "2024-09-17T15:36:43+08:00",
+  "dateModified": "2024-09-17T15:36:43+08:00",
+  "author":[{
+    "@type": "Person",
+    "name": "kai"
+  }],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://wangkai26.github.io/posts/tech/linux/zsh/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kai's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://wangkai26.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://wangkai26.github.io/" accesskey="h" title="Kai&#39;s Blog (Alt + H)">Kai&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://wangkai26.github.io/search" title="🔍搜索 (Alt &#43; /)" accesskey=/>
+                    <span>🔍搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://wangkai26.github.io/" title="🏠主页">
+                    <span>🏠主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://wangkai26.github.io/posts" title="📚文章">
+                    <span>📚文章</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://wangkai26.github.io/archives/" title="⏱时间轴">
+                    <span>⏱时间轴</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://wangkai26.github.io/tags" title="🔖标签">
+                    <span>🔖标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://wangkai26.github.io/about" title="🙋🏻‍♂️关于">
+                    <span>🙋🏻‍♂️关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://wangkai26.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://wangkai26.github.io/posts/">Posts</a>&nbsp;»&nbsp;<a href="https://wangkai26.github.io/posts/tech/">📚文章</a></div>
+    <h1 class="post-title entry-hint-parent">
+      VSCode连接linux,配置zsh&#43;p10k终端,踩坑经验
+    </h1>
+    <div class="post-meta"><span title='2024-09-17 15:36:43 +0800 CST'>2024-09-17</span>&nbsp;·&nbsp;3 分钟&nbsp;·&nbsp;kai
+
+</div>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">目录</span>
+            </summary>
+
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#%e4%b8%80%e5%ae%89%e8%a3%85zsh" aria-label="一、安装zsh">一、安装zsh</a><ul>
+                            
+                    <li>
+                        <a href="#%e4%ba%8c%e5%ae%89%e8%a3%85-p10k" aria-label="二、安装 p10k">二、安装 p10k</a></li>
+                    <li>
+                        <a href="#%e4%b8%89%e5%ae%89%e8%a3%85-oh-my-zsh" aria-label="三、安装 Oh-My-Zsh">三、安装 Oh-My-Zsh</a></li>
+                    <li>
+                        <a href="#%e5%9b%9b%e5%ae%89%e8%a3%85-nerd-%e5%ad%97%e4%bd%93" aria-label="四、安装 Nerd 字体">四、安装 Nerd 字体</a></li>
+                    <li>
+                        <a href="#%e4%ba%94%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6-zshrc" aria-label="五、配置文件 zshrc">五、配置文件 zshrc</a></li>
+                    <li>
+                        <a href="#%e5%85%ad%e9%85%8d%e7%bd%ae-p10k" aria-label="六、配置 p10k">六、配置 p10k</a>
+                    </li>
+                </ul>
+                </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
+  <div class="post-content"><p>本地环境：win10 + VSCode，使用 database 插件，ssh 连接服务器</p>
+<p>为了配置这个网上看起来比较漂亮的终端，踩了一些坑，来来回回搞了快 5 个小时才搞好，这里分享下经验。</p>
+<p>主要流程：</p>
+<ol>
+<li>安装zsh</li>
+<li>安装 p10k</li>
+<li>安装 Oh-My-Zsh</li>
+<li>安装 Nerd 字体</li>
+<li>配置文件 zshrc</li>
+<li>配置 p10k</li>
+</ol>
+<h2 id="一安装zsh">一、安装zsh<a hidden class="anchor" aria-hidden="true" href="#一安装zsh">#</a></h2>
+<p>可以输入 echo $SHELL 查看当前使用的 shell</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ubuntu@VM-12-2-ubuntu:~$ <span class="nb">echo</span> <span class="nv">$SHELL</span>
+</span></span><span class="line"><span class="cl">/bin/bash
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>cat /etc/shells 查看支持的shell</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ubuntu@VM-12-2-ubuntu:~$ cat /etc/shells
+</span></span><span class="line"><span class="cl"><span class="c1"># /etc/shells: valid login shells</span>
+</span></span><span class="line"><span class="cl">/bin/sh
+</span></span><span class="line"><span class="cl">/bin/bash
+</span></span><span class="line"><span class="cl">/usr/bin/bash
+</span></span><span class="line"><span class="cl">/bin/rbash
+</span></span><span class="line"><span class="cl">/usr/bin/rbash
+</span></span><span class="line"><span class="cl">/usr/bin/sh
+</span></span><span class="line"><span class="cl">/bin/dash
+</span></span><span class="line"><span class="cl">/usr/bin/dash
+</span></span><span class="line"><span class="cl">/usr/bin/tmux
+</span></span><span class="line"><span class="cl">/usr/bin/screen
+</span></span><span class="line"><span class="cl">/bin/zsh
+</span></span><span class="line"><span class="cl">/usr/bin/zsh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>因为我已经安装了 zsh，所以已经有了 zsh</p>
+<p>zsh 的安装</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install wget git curl vim -y
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>安装后，会有系统内核升级的提示，一路按回车</p>
+<p>安装好后后再使用 cat 查看系统支持的shell，会看到比刚才多了 zsh，这样 zsh 的安装就完成了</p>
+<p>然后，将系统默认shell 切换为 zsh</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">chsh -s <span class="k">$(</span>which zsh<span class="k">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="二安装-p10k">二、安装 p10k<a hidden class="anchor" aria-hidden="true" href="#二安装-p10k">#</a></h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>国内用户可以放心使用下面 <a href="https://link.zhihu.com/?target=http%3A//gitee.com">http://gitee.com</a> 上的官方镜像加速下载.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git ~/powerlevel10k
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>推荐同时下载另外两个插件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl"># zsh-autosuggestions自动提示插件
+</span></span><span class="line"><span class="cl">git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+</span></span><span class="line"><span class="cl"># zsh-syntax-highlighting语法高亮插件
+</span></span><span class="line"><span class="cl">git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="三安装-oh-my-zsh">三、安装 Oh-My-Zsh<a hidden class="anchor" aria-hidden="true" href="#三安装-oh-my-zsh">#</a></h3>
+<p>执行语句；</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>中国用户可以使用 <a href="https://link.zhihu.com/?target=http%3A//gitee.com">http://gitee.com</a> 上的官方镜像加速下载.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="四安装-nerd-字体">四、安装 Nerd 字体<a hidden class="anchor" aria-hidden="true" href="#四安装-nerd-字体">#</a></h3>
+<p>由于我是在 win10 系统下，使用 VSCode 连接服务器的，我在电脑安装并在 VSCode 配置字体就可以了</p>
+<p>如果不安装，会类似下图，有未知符号</p>
+<blockquote>
+<p>Powerlevel10k不需要自定义字体，但如果有的话可以利用它们。它可以很好地与Nerd Fonts, Source Code Pro, Font Awesome, Powerline，甚至默认的系统字体配合使用。只有在使用Nerd字体时，才能使用完整的样式选项。推荐字体:为Powerlevel10k修补的Meslo Nerd字体。</p>
+</blockquote>
+<p>直接点击下面四个链接下载 ttf 文件并安装，官方链接</p>
+<ul>
+<li>
+<ul>
+<li><a href="https://link.zhihu.com/?target=https%3A//github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf">MesloLGS NF Regular.ttf</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf">MesloLGS NF Bold.ttf</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf">MesloLGS NF Italic.ttf</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf">MesloLGS NF Bold Italic.ttf</a></li>
+</ul>
+</li>
+</ul>
+<p>安装好后，在 VSCode 设置中输入 editor.font 找到 Font Family，设置为 MesloLGS NF 即可。</p>
+<p>2024/9/24 更新，修改 Font Family 会一起修改编辑器中代码的字体，可以在设置中输入 terminal.integrated.font，设为 MesloLGS NF，同样会生效</p>
+<h3 id="五配置文件-zshrc">五、配置文件 zshrc<a hidden class="anchor" aria-hidden="true" href="#五配置文件-zshrc">#</a></h3>
+<p>修改以下两点即可，启动插件和主题，git 是默认启用的，主要添加后面两个</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl"># 修改主题
+</span></span><span class="line"><span class="cl">ZSH_THEME=&#34;powerlevel10k/powerlevel10k&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 启用插件
+</span></span><span class="line"><span class="cl">plugins=(
+</span></span><span class="line"><span class="cl">  git
+</span></span><span class="line"><span class="cl">  zsh-autosuggestions
+</span></span><span class="line"><span class="cl">  zsh-syntax-highlighting
+</span></span><span class="line"><span class="cl">)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="六配置-p10k">六、配置 p10k<a hidden class="anchor" aria-hidden="true" href="#六配置-p10k">#</a></h3>
+<p>输入以下命令即可配置 p10k，</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">p10k configure
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里有一个很大的坑，我配置过程中，总是跳过最关键的 prompt style 这一步，导致我无法设置我最想要的 rainbow 效果</p>
+<p><img loading="lazy" src="https://pic2.zhimg.com/80/v2-a094a5aa153534a4269cecadd514a383_1440w.webp" alt="img"  />
+</p>
+<p><strong>需要终端输入以下命令，将终端配置支持 24 位<a href="https://zhida.zhihu.com/search?q=%E7%9C%9F%E5%BD%A9%E8%89%B2&amp;zhida_source=entity&amp;is_preview=1">真彩色</a></strong>（这里我浪费了很多时间）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">export TERM=&#34;xterm-256color&#34;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后再执行 p10k configure，就会有 prompt style 选项了。</p>
+<p>如果想重新配置，再次输入下面命令即可</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">p10k configure
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>到此为止终于完成了！</p>
+<p>参考链接：</p>
+<ol>
+<li><a href="https://link.zhihu.com/?target=https%3A//github.com/romkatv/powerlevel10k%3Ftab%3Dreadme-ov-file%23oh-my-zsh">romkatv/powerlevel10k: A Zsh theme (github.com)</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//blog.csdn.net/KeyBordkiller/article/details/109537610">在windows中ohmyzsh 的powerlevel10k主题及插件推荐_powerlevel10k 字体下载-CSDN博客</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//blog.csdn.net/m0_72357534/article/details/135453423">利用zsh+oh-my-zsh+powerlevel10k为Linux终端配置一个漂亮的shell_zsh powerlevel10k-CSDN博客</a></li>
+</ol>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://wangkai26.github.io/tags/linux/">Linux</a></li>
+      <li><a href="https://wangkai26.github.io/tags/zsh/">Zsh</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://wangkai26.github.io/posts/tech/linux/linux%E4%B9%8Btmux/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>Linux之tmux</span>
+  </a>
+  <a class="next" href="https://wangkai26.github.io/posts/tech/hugo_custom/basic/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>Basic</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share VSCode连接linux,配置zsh&#43;p10k终端,踩坑经验 on x"
+            href="https://x.com/intent/tweet/?text=VSCode%e8%bf%9e%e6%8e%a5linux%2c%e9%85%8d%e7%bd%aezsh%2bp10k%e7%bb%88%e7%ab%af%2c%e8%b8%a9%e5%9d%91%e7%bb%8f%e9%aa%8c&amp;url=https%3a%2f%2fwangkai26.github.io%2fposts%2ftech%2flinux%2fzsh%2f&amp;hashtags=linux%2czsh">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share VSCode连接linux,配置zsh&#43;p10k终端,踩坑经验 on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fwangkai26.github.io%2fposts%2ftech%2flinux%2fzsh%2f&amp;title=VSCode%e8%bf%9e%e6%8e%a5linux%2c%e9%85%8d%e7%bd%aezsh%2bp10k%e7%bb%88%e7%ab%af%2c%e8%b8%a9%e5%9d%91%e7%bb%8f%e9%aa%8c&amp;summary=VSCode%e8%bf%9e%e6%8e%a5linux%2c%e9%85%8d%e7%bd%aezsh%2bp10k%e7%bb%88%e7%ab%af%2c%e8%b8%a9%e5%9d%91%e7%bb%8f%e9%aa%8c&amp;source=https%3a%2f%2fwangkai26.github.io%2fposts%2ftech%2flinux%2fzsh%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share VSCode连接linux,配置zsh&#43;p10k终端,踩坑经验 on reddit"
+            href="https://reddit.com/submit?url=https%3a%2f%2fwangkai26.github.io%2fposts%2ftech%2flinux%2fzsh%2f&title=VSCode%e8%bf%9e%e6%8e%a5linux%2c%e9%85%8d%e7%bd%aezsh%2bp10k%e7%bb%88%e7%ab%af%2c%e8%b8%a9%e5%9d%91%e7%bb%8f%e9%aa%8c">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share VSCode连接linux,配置zsh&#43;p10k终端,踩坑经验 on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fwangkai26.github.io%2fposts%2ftech%2flinux%2fzsh%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share VSCode连接linux,配置zsh&#43;p10k终端,踩坑经验 on whatsapp"
+            href="https://api.whatsapp.com/send?text=VSCode%e8%bf%9e%e6%8e%a5linux%2c%e9%85%8d%e7%bd%aezsh%2bp10k%e7%bb%88%e7%ab%af%2c%e8%b8%a9%e5%9d%91%e7%bb%8f%e9%aa%8c%20-%20https%3a%2f%2fwangkai26.github.io%2fposts%2ftech%2flinux%2fzsh%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share VSCode连接linux,配置zsh&#43;p10k终端,踩坑经验 on telegram"
+            href="https://telegram.me/share/url?text=VSCode%e8%bf%9e%e6%8e%a5linux%2c%e9%85%8d%e7%bd%aezsh%2bp10k%e7%bb%88%e7%ab%af%2c%e8%b8%a9%e5%9d%91%e7%bb%8f%e9%aa%8c&amp;url=https%3a%2f%2fwangkai26.github.io%2fposts%2ftech%2flinux%2fzsh%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share VSCode连接linux,配置zsh&#43;p10k终端,踩坑经验 on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=VSCode%e8%bf%9e%e6%8e%a5linux%2c%e9%85%8d%e7%bd%aezsh%2bp10k%e7%bb%88%e7%ab%af%2c%e8%b8%a9%e5%9d%91%e7%bb%8f%e9%aa%8c&u=https%3a%2f%2fwangkai26.github.io%2fposts%2ftech%2flinux%2fzsh%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="https://wangkai26.github.io/">Kai&#39;s Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Basic | Kai&#39;s Blog</title>
+<meta name="keywords" content="hugo">
+<meta name="description" content="date: 2024-02-02T04:14:54-08:00 draft: false params: author: kai title: hugo使用title weight: 10 验证是否安装完成： 输入 hguo version，检查是否有如下打印信息 1 2 D:\github-kai\kai_blog&gt;hugo version hugo v0.131.0-bfbee17932ff24009008aa94cdd75c0c41f59279 windows/amd64 BuildDate=2024-08-02T09:03:48Z VendorInfo=gohugoio 快速运行流程： 在 quickstart">
+<meta name="author" content="kai">
+<link rel="canonical" href="https://wangkai26.github.io/posts/tech/hugo_custom/basic/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.af426310e146b199cc19c33acd2cd52502983e6f8cd40d5af80a041bf9ad8ee0.css" integrity="sha256-r0JjEOFGsZnMGcM6zSzVJQKYPm&#43;M1A1a&#43;AoEG/mtjuA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://wangkai26.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://wangkai26.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://wangkai26.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://wangkai26.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://wangkai26.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="zh" href="https://wangkai26.github.io/posts/tech/hugo_custom/basic/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+  
+
+<meta property="og:title" content="Basic" />
+<meta property="og:description" content="date: 2024-02-02T04:14:54-08:00 draft: false params: author: kai title: hugo使用title weight: 10 验证是否安装完成： 输入 hguo version，检查是否有如下打印信息 1 2 D:\github-kai\kai_blog&gt;hugo version hugo v0.131.0-bfbee17932ff24009008aa94cdd75c0c41f59279 windows/amd64 BuildDate=2024-08-02T09:03:48Z VendorInfo=gohugoio 快速运行流程： 在 quickstart" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://wangkai26.github.io/posts/tech/hugo_custom/basic/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-09-17T15:31:08+08:00" />
+<meta property="article:modified_time" content="2024-09-17T15:31:08+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Basic"/>
+<meta name="twitter:description" content="date: 2024-02-02T04:14:54-08:00 draft: false params: author: kai title: hugo使用title weight: 10 验证是否安装完成： 输入 hguo version，检查是否有如下打印信息 1 2 D:\github-kai\kai_blog&gt;hugo version hugo v0.131.0-bfbee17932ff24009008aa94cdd75c0c41f59279 windows/amd64 BuildDate=2024-08-02T09:03:48Z VendorInfo=gohugoio 快速运行流程： 在 quickstart"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://wangkai26.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "📚文章",
+      "item": "https://wangkai26.github.io/posts/tech/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "hugo",
+      "item": "https://wangkai26.github.io/posts/tech/hugo_custom/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  4 ,
+      "name": "Basic",
+      "item": "https://wangkai26.github.io/posts/tech/hugo_custom/basic/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Basic",
+  "name": "Basic",
+  "description": "date: 2024-02-02T04:14:54-08:00 draft: false params: author: kai title: hugo使用title weight: 10 验证是否安装完成： 输入 hguo version，检查是否有如下打印信息 1 2 D:\\github-kai\\kai_blog\u0026gt;hugo version hugo v0.131.0-bfbee17932ff24009008aa94cdd75c0c41f59279 windows/amd64 BuildDate=2024-08-02T09:03:48Z VendorInfo=gohugoio 快速运行流程： 在 quickstart",
+  "keywords": [
+    "hugo"
+  ],
+  "articleBody": " date: 2024-02-02T04:14:54-08:00 draft: false params: author: kai title: hugo使用title weight: 10\n验证是否安装完成：\n输入 hguo version，检查是否有如下打印信息\n1 2 D:\\github-kai\\kai_blog\u003ehugo version hugo v0.131.0-bfbee17932ff24009008aa94cdd75c0c41f59279 windows/amd64 BuildDate=2024-08-02T09:03:48Z VendorInfo=gohugoio 快速运行流程：\n在 quickstart 目录中为您的项目创建 目录结构 hugo new site quickstart\n将当前目录更改为项目的根目录。cd quickstart\n进入 themes 目录，下载主题，如 papermod，git clone https://github.com/adityatelange/hugo-PaperMod.git\n回到主目录启动 Hugo 启动本地服务器并生成站点内容，hugo server -D\n重要链接：\nFeatures · adityatelange/hugo-PaperMod Wiki (github.com) [置顶] hugo博客搭建 | PaperMod主题 | Sulv’s Blog (sulvblog.cn) [golang][hugo]使用Hugo搭建静态站点-腾讯云开发者社区-腾讯云 (tencent.com)\nHugo | 一起动手搭建个人博客吧 | 小球飞鱼 (mantyke.icu)\nhttps://blog.csdn.net/p_function/article/details/103842298\nhttps://www.emojiall.com/zh-hans/all-emojis\nhttps://bore.vip/archives/ca21a352/index.html https://www.shaohanyun.top/posts/env/blog_build2/ https://dvel.me/posts/hugo-papermod-config/#markdown-%e6%b8%b2%e6%9f%93%e9%a3%8e%e6%a0%bc\nHugo 与 github page 关联 https://ratmomo.github.io/p/2024/06/%E4%BD%BF%E7%94%A8-hugo--github-pages-%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/\n安装hugo 创建项目\nHugo new PS D:\\github-kai\u003e hugo new site kai-blog Congratulations! Your new Hugo site was created in D:\\github-kai\\kai-blog.\nJust a few more steps…\nChange the current directory to D:\\github-kai\\kai-blog. Create or install a theme: Create a new theme with the command “hugo new theme ” Or, install a theme from https://themes.gohugo.io/ Edit hugo.toml, setting the “theme” property to the theme name. Create new content with the command “hugo new content .”. Start the embedded web server with the command “hugo server –buildDrafts”. See documentation at https://gohugo.io/.\n建好后，有以下内容：\nArchetypes 有 default.md Assets 空 Content 空 Data 空 i18n 空 Layouts 空 Static 空 Themes 空 hugo.toml 1kb 参考教程：\nhttps://www.sulvblog.cn/ https://www.sulvblog.cn/posts/blog/build_hugo/#6%e5%90%af%e5%8a%a8%e5%8d%9a%e5%ae%a2 配置文件 - 基本 注意：没有配置 theme 时，本地运行，页面会是：Page Not Found\n默认的配置文件为根目录下 hugo.toml 文件\n默认内容：\n1 2 3 4 5 6 7 8 baseURL = 'https://example.org/' languageCode = 'en-us' title = 'ABC Widgets, Inc.' [params] subtitle = 'The Best Widgets on Earth' [params.contact] email = 'info@example.org' phone = '+1 202-555-1212' 查看默认加载路径： Hugo会按优先级顺序尝试加载以下配置文件，你可以根据这些默认路径检查配置文件：\nconfig.yaml config.toml config.json 如果你有多个配置文件（例如hugo.yaml和hugo.toml），Hugo会根据文件类型加载默认的config.yaml、config.toml或config.json。确保你命名的配置文件是config.yaml而不是hugo.yaml。\n因为不习惯 toml 的语法，所以我删除了原先的 hugo.toml，新建了文件 config.yaml\n1 2 3 4 baseURL: https://example.org/ languageCode: en-us title: My New Hugo Site. theme: hugo-PaperMod # 主题名字，和themes文件夹下的一致 配置文件 - 进阶 站点导航菜单 menu 在 Hugo 中，menu配置项用于定义站点导航菜单，identifier是每个菜单条目的一个唯一标识符。\nPaperMod Features · adityatelange/hugo-PaperMod Wiki (github.com)\n时间轴设置\narchives，注意设置 layout: “archives” ，这是最核心的\n文件头部规范 1 2 3 4 5 6 7 +++ Categories =[\"github\"] Tags = [\"github\", \"开发者\", \"go\"] date = \"2019-12-12T18:20:42+08:00\" title = \"hugo搭建github博客过程\" description = \"landv\" +++ 1.title 文章名称 2.description 文章详细介绍 3.tag 标签 4.categories 文章分类 _index 作用 如果在文件夹下不生成 _index.md 文件\n那进入主页的 posts 可以直接看到文章标题\n但在主页点击按钮会进入 404 界面，因为无法找到 url\n1 2 3 4 5 6 7 buttons: - name: 👨🏻‍💻技术 url: posts/tech - name: 📕阅读 url: posts/read - name: 🏖生活 url: posts/life 只要创建了 _index.md 文件，甚至不需要任何内容，再点击按钮就可以到文章界面\n常用命令 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 #使用方法: hugo hugo [flags] hugo [command] hugo [command] [flags] #查看版本 hugo version #版本和环境详细信息 hugo env #创建新站点 hugo new site \"$mysite\" #创建文章 hugo new index.md 在content/文件夹可以看到，此时多了一个markdown格式的文件index.md，打开文件可以看到时间和文件名等信息已经自动加到文件开头，包括创建时间，页面名，是否为草稿等。 #编译生成静态文件，Hugo将编译所有文件并输出到public目录 hugo #编译生成静态文件并启动web服务 hugo server 常用参数：\n1 2 3 4 5 6 7 8 9 10 11 --bind=\"127.0.0.1\" 服务监听IP地址； -p, --port=1313 服务监听端口； -w, --watch[=true] 监听站点目录，发现文件变更自动编译； -D, --buildDrafts 包括被标记为draft的文章； -E, --buildExpired 包括已过期的文章； -F, --buildFuture 包括将在未来发布的文章； -b, --baseURL=\"www.datals.com\" 服务监听域名； --log[=false]: 开启日志； --logFile=\"/var/log/hugo.log\": log输出路径； -t, --theme=\"\" 指定主题； -v, --verbose[=false]: 输出详细信息 一些小问题： hugo server 和 hugo server -D 的区别：\nhugo server -D： 这个命令会启动本地服务器并生成站点内容，同时包括所有标记为草稿的文章。也就是说，即使文章还在草稿状态（draft: true），它们也会在本地预览时显示出来。这对于开发和调试非常有用： 总结起来，-D参数的作用是确保包含草稿文章，以便在本地环境中可以预览和测试这些内容。如果你在开发过程中需要查看所有文章（包括草稿），推荐使用hugo server -D。而如果你只关心那些已经不是草稿的内容，可以仅使用hugo server。\n2.profileMode 不生效\nprofileMode 不生效： 解决办法：将其放在 params 内部，\n为什么使用 params 能够解决问题\n约定俗成：Hugo 的设计理念中，把自定义的站点参数统一放在 params 下，是一种约定俗成的做法。这样不仅代码更加清晰，而且也避免了可能的命名冲突。 模板访问：将自定义参数放在 params 下，可以确保 Hugo 能够正确地将这些参数包含在其上下文中，使得它们能够被模板正确访问和渲染。 一致性：统一将所有自定义参数放在 params 下，保证了配置的结构和访问的一致性，使得管理配置更加方便。 报错： defaultContentLanguage: “zh” # # 设置默认语言为中文\nhugo new a.md\npanic: lang not set\n解决办法，\n将 defaultContentLanguage: \"zh\" 对应语言设置为和 languageCode 一样，我之前是因为 defaultContentLanguage 为空\n生成文章不展示\n可能是因为 draft 状态为 True，将其修改为 False 就可以啦。\n",
+  "wordCount" : "1909",
+  "inLanguage": "zh",
+  "datePublished": "2024-09-17T15:31:08+08:00",
+  "dateModified": "2024-09-17T15:31:08+08:00",
+  "author":[{
+    "@type": "Person",
+    "name": "kai"
+  }],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://wangkai26.github.io/posts/tech/hugo_custom/basic/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kai's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://wangkai26.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://wangkai26.github.io/" accesskey="h" title="Kai&#39;s Blog (Alt + H)">Kai&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://wangkai26.github.io/search" title="🔍搜索 (Alt &#43; /)" accesskey=/>
+                    <span>🔍搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://wangkai26.github.io/" title="🏠主页">
+                    <span>🏠主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://wangkai26.github.io/posts" title="📚文章">
+                    <span>📚文章</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://wangkai26.github.io/archives/" title="⏱时间轴">
+                    <span>⏱时间轴</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://wangkai26.github.io/tags" title="🔖标签">
+                    <span>🔖标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://wangkai26.github.io/about" title="🙋🏻‍♂️关于">
+                    <span>🙋🏻‍♂️关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://wangkai26.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://wangkai26.github.io/posts/">Posts</a>&nbsp;»&nbsp;<a href="https://wangkai26.github.io/posts/tech/">📚文章</a>&nbsp;»&nbsp;<a href="https://wangkai26.github.io/posts/tech/hugo_custom/">hugo</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Basic
+    </h1>
+    <div class="post-meta"><span title='2024-09-17 15:31:08 +0800 CST'>2024-09-17</span>&nbsp;·&nbsp;4 分钟&nbsp;·&nbsp;kai
+
+</div>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">目录</span>
+            </summary>
+
+            <div class="inner"><ul><ul>
+                    <li>
+                        <a href="#%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6---%e5%9f%ba%e6%9c%ac" aria-label="配置文件 - 基本">配置文件 - 基本</a></li>
+                    <li>
+                        <a href="#%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6---%e8%bf%9b%e9%98%b6" aria-label="配置文件 - 进阶">配置文件 - 进阶</a><ul>
+                            
+                    <li>
+                        <a href="#%e7%ab%99%e7%82%b9%e5%af%bc%e8%88%aa%e8%8f%9c%e5%8d%95-menu" aria-label="站点导航菜单 menu">站点导航菜单 menu</a></li></ul>
+                    </li></ul>
+                        
+                    <li>
+                        <a href="#papermod" aria-label="PaperMod">PaperMod</a><ul>
+                            
+                    <li>
+                        <a href="#%e6%96%87%e4%bb%b6%e5%a4%b4%e9%83%a8%e8%a7%84%e8%8c%83" aria-label="文件头部规范">文件头部规范</a></li>
+                    <li>
+                        <a href="#_index-%e4%bd%9c%e7%94%a8" aria-label="_index 作用">_index 作用</a></li>
+                    <li>
+                        <a href="#%e5%b8%b8%e7%94%a8%e5%91%bd%e4%bb%a4" aria-label="常用命令">常用命令</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e4%b8%80%e4%ba%9b%e5%b0%8f%e9%97%ae%e9%a2%98" aria-label="一些小问题：">一些小问题：</a><ul>
+                            <ul>
+                            
+                    <li>
+                        <a href="#%e6%8a%a5%e9%94%99" aria-label="报错：">报错：</a>
+                    </li>
+                </ul>
+                </ul>
+                </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
+  <div class="post-content"><hr>
+<p>date: 2024-02-02T04:14:54-08:00
+draft: false
+params:
+author: kai
+title: hugo使用title
+weight: 10</p>
+<hr>
+<p>验证是否安装完成：</p>
+<p>输入 <code>hguo version</code>，检查是否有如下打印信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">D:\github-kai\kai_blog&gt;hugo version
+</span></span><span class="line"><span class="cl">hugo v0.131.0-bfbee17932ff24009008aa94cdd75c0c41f59279 windows/amd64 BuildDate=2024-08-02T09:03:48Z VendorInfo=gohugoio
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>快速运行流程：</p>
+<ol>
+<li>
+<p>在 quickstart 目录中为您的项目创建 目录结构 <code>hugo new site quickstart</code></p>
+</li>
+<li>
+<p>将当前目录更改为项目的根目录。<code>cd quickstart</code></p>
+</li>
+<li>
+<p>进入 themes 目录，下载主题，如 papermod，<code>git clone https://github.com/adityatelange/hugo-PaperMod.git</code></p>
+</li>
+<li>
+<p>回到主目录启动 Hugo 启动本地服务器并生成站点内容，<code>hugo server -D</code></p>
+</li>
+</ol>
+<p>重要链接：</p>
+<ol>
+<li><a href="https://github.com/adityatelange/hugo-PaperMod/wiki/Features#edit-link-for-posts">Features · adityatelange/hugo-PaperMod Wiki (github.com)</a></li>
+<li>[<a href="https://www.sulvblog.cn/posts/blog/build_hugo/">置顶] hugo博客搭建 | PaperMod主题 | Sulv&rsquo;s Blog (sulvblog.cn)</a></li>
+</ol>
+<p>[<a href="https://cloud.tencent.com/developer/article/1546275">golang][hugo]使用Hugo搭建静态站点-腾讯云开发者社区-腾讯云 (tencent.com)</a></p>
+<p><a href="https://mantyke.icu/posts/2021/hugo-build-blog/">Hugo | 一起动手搭建个人博客吧 | 小球飞鱼 (mantyke.icu)</a></p>
+<p><a href="https://blog.csdn.net/p_function/article/details/103842298">https://blog.csdn.net/p_function/article/details/103842298</a></p>
+<p><a href="https://www.emojiall.com/zh-hans/all-emojis">https://www.emojiall.com/zh-hans/all-emojis</a></p>
+<p><a href="https://bore.vip/archives/ca21a352/index.html">https://bore.vip/archives/ca21a352/index.html</a>
+<a href="https://www.shaohanyun.top/posts/env/blog_build2/">https://www.shaohanyun.top/posts/env/blog_build2/</a>
+<a href="https://dvel.me/posts/hugo-papermod-config/#markdown-%e6%b8%b2%e6%9f%93%e9%a3%8e%e6%a0%bc">https://dvel.me/posts/hugo-papermod-config/#markdown-%e6%b8%b2%e6%9f%93%e9%a3%8e%e6%a0%bc</a></p>
+<p>Hugo 与 github page 关联
+<a href="https://ratmomo.github.io/p/2024/06/%E4%BD%BF%E7%94%A8-hugo--github-pages-%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">https://ratmomo.github.io/p/2024/06/%E4%BD%BF%E7%94%A8-hugo--github-pages-%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</a></p>
+<ol>
+<li>安装hugo</li>
+</ol>
+<p>创建项目</p>
+<p>Hugo new
+PS D:\github-kai&gt; hugo new site kai-blog
+Congratulations! Your new Hugo site was created in D:\github-kai\kai-blog.</p>
+<p>Just a few more steps&hellip;</p>
+<ol>
+<li>Change the current directory to D:\github-kai\kai-blog.</li>
+<li>Create or install a theme:</li>
+</ol>
+<ul>
+<li>Create a new theme with the command &ldquo;hugo new theme <THEMENAME>&rdquo;</li>
+<li>Or, install a theme from <a href="https://themes.gohugo.io/">https://themes.gohugo.io/</a></li>
+</ul>
+<ol start="3">
+<li>Edit hugo.toml, setting the &ldquo;theme&rdquo; property to the theme name.</li>
+<li>Create new content with the command &ldquo;hugo new content <SECTIONNAME>&lt;FILENAME&gt;.<FORMAT>&rdquo;.</li>
+<li>Start the embedded web server with the command &ldquo;hugo server &ndash;buildDrafts&rdquo;.</li>
+</ol>
+<p>See documentation at <a href="https://gohugo.io/">https://gohugo.io/</a>.</p>
+<p>建好后，有以下内容：</p>
+<ol>
+<li>Archetypes   有 default.md</li>
+<li>Assets          空</li>
+<li>Content         空</li>
+<li>Data         空</li>
+<li>i18n         空</li>
+<li>Layouts         空</li>
+<li>Static         空</li>
+<li>Themes         空</li>
+<li>hugo.toml     1kb</li>
+</ol>
+<p>参考教程：</p>
+<ol>
+<li><a href="https://www.sulvblog.cn/">https://www.sulvblog.cn/</a></li>
+<li><a href="https://www.sulvblog.cn/posts/blog/build_hugo/#6%e5%90%af%e5%8a%a8%e5%8d%9a%e5%ae%a2">https://www.sulvblog.cn/posts/blog/build_hugo/#6%e5%90%af%e5%8a%a8%e5%8d%9a%e5%ae%a2</a></li>
+<li></li>
+</ol>
+<h2 id="配置文件---基本">配置文件 - 基本<a hidden class="anchor" aria-hidden="true" href="#配置文件---基本">#</a></h2>
+<p>注意：没有配置 theme 时，本地运行，页面会是：Page Not Found</p>
+<p>默认的配置文件为根目录下 hugo.toml 文件</p>
+<p>默认内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="nx">baseURL</span> <span class="p">=</span> <span class="s1">&#39;https://example.org/&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">languageCode</span> <span class="p">=</span> <span class="s1">&#39;en-us&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">title</span> <span class="p">=</span> <span class="s1">&#39;ABC Widgets, Inc.&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">params</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">subtitle</span> <span class="p">=</span> <span class="s1">&#39;The Best Widgets on Earth&#39;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">[</span><span class="nx">params</span><span class="p">.</span><span class="nx">contact</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">email</span> <span class="p">=</span> <span class="s1">&#39;info@example.org&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">phone</span> <span class="p">=</span> <span class="s1">&#39;+1 202-555-1212&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>查看默认加载路径</strong>： Hugo会按优先级顺序尝试加载以下配置文件，你可以根据这些默认路径检查配置文件：</p>
+<ul>
+<li><code>config.yaml</code></li>
+<li><code>config.toml</code></li>
+<li><code>config.json</code></li>
+</ul>
+<p>如果你有多个配置文件（例如<code>hugo.yaml</code>和<code>hugo.toml</code>），Hugo会根据文件类型加载默认的<code>config.yaml</code>、<code>config.toml</code>或<code>config.json</code>。确保你命名的配置文件是<code>config.yaml</code>而不是<code>hugo.yaml</code>。</p>
+<p>因为不习惯 toml 的语法，所以我删除了原先的 hugo.toml，新建了文件 config.yaml</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">baseURL</span><span class="p">:</span><span class="w"> </span><span class="l">https://example.org/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">languageCode</span><span class="p">:</span><span class="w"> </span><span class="l">en-us</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">My New Hugo Site.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">theme</span><span class="p">:</span><span class="w"> </span><span class="l">hugo-PaperMod</span><span class="w"> </span><span class="c"># 主题名字，和themes文件夹下的一致</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="配置文件---进阶">配置文件 - 进阶<a hidden class="anchor" aria-hidden="true" href="#配置文件---进阶">#</a></h2>
+<h3 id="站点导航菜单-menu">站点导航菜单 menu<a hidden class="anchor" aria-hidden="true" href="#站点导航菜单-menu">#</a></h3>
+<p>在 Hugo 中，<code>menu</code>配置项用于定义站点导航菜单，<code>identifier</code>是每个菜单条目的一个唯一标识符。</p>
+<h1 id="papermod">PaperMod<a hidden class="anchor" aria-hidden="true" href="#papermod">#</a></h1>
+<p><a href="https://github.com/adityatelange/hugo-PaperMod/wiki/Features#profile-mode">Features · adityatelange/hugo-PaperMod Wiki (github.com)</a></p>
+<p>时间轴设置</p>
+<p>archives，注意设置 layout: &ldquo;archives&rdquo; ，这是最核心的</p>
+<h2 id="文件头部规范">文件头部规范<a hidden class="anchor" aria-hidden="true" href="#文件头部规范">#</a></h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+++
+</span></span><span class="line"><span class="cl">Categories =[&#34;github&#34;]
+</span></span><span class="line"><span class="cl">Tags = [&#34;github&#34;, &#34;开发者&#34;, &#34;go&#34;]
+</span></span><span class="line"><span class="cl">date = &#34;2019-12-12T18:20:42+08:00&#34;
+</span></span><span class="line"><span class="cl">title = &#34;hugo搭建github博客过程&#34;
+</span></span><span class="line"><span class="cl">description = &#34;landv&#34;
+</span></span><span class="line"><span class="cl">+++
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>1.title 文章名称</li>
+<li>2.description 文章详细介绍</li>
+<li>3.tag 标签</li>
+<li>4.categories 文章分类</li>
+</ul>
+<h2 id="_index-作用">_index 作用<a hidden class="anchor" aria-hidden="true" href="#_index-作用">#</a></h2>
+<p>如果在文件夹下不生成 _index.md 文件</p>
+<p>那进入主页的 posts 可以直接看到文章标题</p>
+<p>但在主页点击按钮会进入 404 界面，因为无法找到 url</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">    </span><span class="nt">buttons</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">👨🏻‍💻技术</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">posts/tech</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">📕阅读</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">posts/read</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">🏖生活</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">posts/life</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>只要创建了 _index.md 文件，甚至不需要任何内容，再点击按钮就可以到文章界面</p>
+<h2 id="常用命令">常用命令<a hidden class="anchor" aria-hidden="true" href="#常用命令">#</a></h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#使用方法:</span>
+</span></span><span class="line"><span class="cl">  hugo
+</span></span><span class="line"><span class="cl">  hugo <span class="o">[</span>flags<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  hugo <span class="o">[</span>command<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  hugo <span class="o">[</span>command<span class="o">]</span> <span class="o">[</span>flags<span class="o">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#查看版本</span>
+</span></span><span class="line"><span class="cl">hugo version
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#版本和环境详细信息</span>
+</span></span><span class="line"><span class="cl">hugo env
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#创建新站点</span>
+</span></span><span class="line"><span class="cl">hugo new site <span class="s2">&#34;</span><span class="nv">$mysite</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#创建文章</span>
+</span></span><span class="line"><span class="cl">hugo new index.md  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">在content/文件夹可以看到，此时多了一个markdown格式的文件index.md，打开文件可以看到时间和文件名等信息已经自动加到文件开头，包括创建时间，页面名，是否为草稿等。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#编译生成静态文件，Hugo将编译所有文件并输出到public目录  </span>
+</span></span><span class="line"><span class="cl">hugo
+</span></span><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#编译生成静态文件并启动web服务</span>
+</span></span><span class="line"><span class="cl">hugo server
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>常用参数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"> --bind<span class="o">=</span><span class="s2">&#34;127.0.0.1&#34;</span>    服务监听IP地址；
+</span></span><span class="line"><span class="cl">  -p, --port<span class="o">=</span><span class="m">1313</span>       服务监听端口；
+</span></span><span class="line"><span class="cl">  -w, --watch<span class="o">[=</span>true<span class="o">]</span>      监听站点目录，发现文件变更自动编译；
+</span></span><span class="line"><span class="cl">  -D, --buildDrafts     包括被标记为draft的文章；
+</span></span><span class="line"><span class="cl">  -E, --buildExpired    包括已过期的文章；
+</span></span><span class="line"><span class="cl">  -F, --buildFuture     包括将在未来发布的文章；
+</span></span><span class="line"><span class="cl">  -b, --baseURL<span class="o">=</span><span class="s2">&#34;www.datals.com&#34;</span>  服务监听域名；
+</span></span><span class="line"><span class="cl">  --log<span class="o">[=</span>false<span class="o">]</span>:           开启日志；
+</span></span><span class="line"><span class="cl">  --logFile<span class="o">=</span><span class="s2">&#34;/var/log/hugo.log&#34;</span>:          log输出路径；
+</span></span><span class="line"><span class="cl">  -t, --theme<span class="o">=</span><span class="s2">&#34;&#34;</span>          指定主题；
+</span></span><span class="line"><span class="cl">  -v, --verbose<span class="o">[=</span>false<span class="o">]</span>: 输出详细信息
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="一些小问题">一些小问题：<a hidden class="anchor" aria-hidden="true" href="#一些小问题">#</a></h1>
+<p>hugo server 和 hugo server -D 的区别：</p>
+<ol>
+<li><strong><code>hugo server -D</code></strong>： 这个命令会启动本地服务器并生成站点内容，同时包括所有标记为草稿的文章。也就是说，即使文章还在草稿状态（<code>draft: true</code>），它们也会在本地预览时显示出来。这对于开发和调试非常有用：</li>
+</ol>
+<p>总结起来，<code>-D</code>参数的作用是确保包含草稿文章，以便在本地环境中可以预览和测试这些内容。如果你在开发过程中需要查看所有文章（包括草稿），推荐使用<code>hugo server -D</code>。而如果你只关心那些已经不是草稿的内容，可以仅使用<code>hugo server</code>。</p>
+<p>2.profileMode 不生效</p>
+<ol start="2">
+<li>profileMode 不生效：</li>
+</ol>
+<p>解决办法：将其放在 params 内部，</p>
+<p>为什么使用 <code>params</code> 能够解决问题</p>
+<ol>
+<li><strong>约定俗成</strong>：Hugo 的设计理念中，把自定义的站点参数统一放在 <code>params</code> 下，是一种约定俗成的做法。这样不仅代码更加清晰，而且也避免了可能的命名冲突。</li>
+<li><strong>模板访问</strong>：将自定义参数放在 <code>params</code> 下，可以确保 Hugo 能够正确地将这些参数包含在其上下文中，使得它们能够被模板正确访问和渲染。</li>
+<li><strong>一致性</strong>：统一将所有自定义参数放在 <code>params</code> 下，保证了配置的结构和访问的一致性，使得管理配置更加方便。</li>
+</ol>
+<h3 id="报错">报错：<a hidden class="anchor" aria-hidden="true" href="#报错">#</a></h3>
+<p>defaultContentLanguage: &ldquo;zh&rdquo; # # 设置默认语言为中文</p>
+<p>hugo new a.md</p>
+<p>panic: lang not set</p>
+<p>解决办法，</p>
+<p>将 <code>defaultContentLanguage: &quot;zh&quot;</code> 对应语言设置为和 <code>languageCode</code> 一样，我之前是因为 <code>defaultContentLanguage</code> 为空</p>
+<p>生成文章不展示</p>
+<p>可能是因为 draft 状态为 True，将其修改为 False 就可以啦。</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://wangkai26.github.io/tags/hugo/">Hugo</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://wangkai26.github.io/posts/tech/linux/zsh/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>VSCode连接linux,配置zsh&#43;p10k终端,踩坑经验</span>
+  </a>
+  <a class="next" href="https://wangkai26.github.io/posts/tech/mysql/demo3/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>Demo3</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Basic on x"
+            href="https://x.com/intent/tweet/?text=Basic&amp;url=https%3a%2f%2fwangkai26.github.io%2fposts%2ftech%2fhugo_custom%2fbasic%2f&amp;hashtags=hugo">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Basic on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fwangkai26.github.io%2fposts%2ftech%2fhugo_custom%2fbasic%2f&amp;title=Basic&amp;summary=Basic&amp;source=https%3a%2f%2fwangkai26.github.io%2fposts%2ftech%2fhugo_custom%2fbasic%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Basic on reddit"
+            href="https://reddit.com/submit?url=https%3a%2f%2fwangkai26.github.io%2fposts%2ftech%2fhugo_custom%2fbasic%2f&title=Basic">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Basic on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fwangkai26.github.io%2fposts%2ftech%2fhugo_custom%2fbasic%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Basic on whatsapp"
+            href="https://api.whatsapp.com/send?text=Basic%20-%20https%3a%2f%2fwangkai26.github.io%2fposts%2ftech%2fhugo_custom%2fbasic%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Basic on telegram"
+            href="https://telegram.me/share/url?text=Basic&amp;url=https%3a%2f%2fwangkai26.github.io%2fposts%2ftech%2fhugo_custom%2fbasic%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Basic on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=Basic&u=https%3a%2f%2fwangkai26.github.io%2fposts%2ftech%2fhugo_custom%2fbasic%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="https://wangkai26.github.io/">Kai&#39;s Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

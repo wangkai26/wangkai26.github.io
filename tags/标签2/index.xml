@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>标签2 on Kai&#39;s Blog</title>
+    <link>https://wangkai26.github.io/tags/%E6%A0%87%E7%AD%BE2/</link>
+    <description>Recent content in 标签2 on Kai&#39;s Blog</description>
+    <generator>Hugo -- 0.131.0</generator>
+    <language>zh</language>
+    <lastBuildDate>Mon, 16 Sep 2024 21:54:53 +0800</lastBuildDate>
+    <atom:link href="https://wangkai26.github.io/tags/%E6%A0%87%E7%AD%BE2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Demo3</title>
+      <link>https://wangkai26.github.io/posts/tech/mysql/demo3/</link>
+      <pubDate>Mon, 16 Sep 2024 21:54:53 +0800</pubDate>
+      <guid>https://wangkai26.github.io/posts/tech/mysql/demo3/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Demo2</title>
+      <link>https://wangkai26.github.io/posts/tech/mysql/demo2/</link>
+      <pubDate>Mon, 16 Sep 2024 21:53:29 +0800</pubDate>
+      <guid>https://wangkai26.github.io/posts/tech/mysql/demo2/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Demo1</title>
+      <link>https://wangkai26.github.io/posts/tech/mysql/demo1/</link>
+      <pubDate>Mon, 16 Sep 2024 21:53:17 +0800</pubDate>
+      <guid>https://wangkai26.github.io/posts/tech/mysql/demo1/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Nginx 理论知识</title>
+      <link>https://wangkai26.github.io/posts/tech/nginx/principles/</link>
+      <pubDate>Mon, 16 Sep 2024 21:46:46 +0800</pubDate>
+      <guid>https://wangkai26.github.io/posts/tech/nginx/principles/</guid>
+      <description>nginx 理论知识</description>
+    </item>
+    <item>
+      <title>Practice</title>
+      <link>https://wangkai26.github.io/posts/tech/regex/practice/</link>
+      <pubDate>Mon, 16 Sep 2024 21:37:33 +0800</pubDate>
+      <guid>https://wangkai26.github.io/posts/tech/regex/practice/</guid>
+      <description>正则表达式(Regular Expression)是一种文本模式，包括普通字符（例如，a 到 z 之间的字母）和特殊字符（称为&amp;quot;元字符&amp;q</description>
+    </item>
+    <item>
+      <title>Read_demo</title>
+      <link>https://wangkai26.github.io/posts/read/read_demo/</link>
+      <pubDate>Mon, 16 Sep 2024 21:32:15 +0800</pubDate>
+      <guid>https://wangkai26.github.io/posts/read/read_demo/</guid>
+      <description>科幻小说《球状闪电》, i like it 触发构建</description>
+    </item>
+    <item>
+      <title>Gg</title>
+      <link>https://wangkai26.github.io/posts/life/life_second/gg/</link>
+      <pubDate>Mon, 16 Sep 2024 21:19:53 +0800</pubDate>
+      <guid>https://wangkai26.github.io/posts/life/life_second/gg/</guid>
+      <description>gg 哈哈哈</description>
+    </item>
+  </channel>
+</rss>

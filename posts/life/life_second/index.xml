@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Kai&#39;s Blog</title>
+    <link>http://localhost:1313/posts/life/life_second/</link>
+    <description>Recent content on Kai&#39;s Blog</description>
+    <generator>Hugo -- 0.131.0</generator>
+    <language>zh</language>
+    <lastBuildDate>Mon, 16 Sep 2024 21:19:53 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/posts/life/life_second/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gg</title>
+      <link>http://localhost:1313/posts/life/life_second/gg/</link>
+      <pubDate>Mon, 16 Sep 2024 21:19:53 +0800</pubDate>
+      <guid>http://localhost:1313/posts/life/life_second/gg/</guid>
+      <description>gg 哈哈哈</description>
+    </item>
+  </channel>
+</rss>

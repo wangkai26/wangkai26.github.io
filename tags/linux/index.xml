@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Linux on Kai&#39;s Blog</title>
+    <link>https://wangkai26.github.io/tags/linux/</link>
+    <description>Recent content in Linux on Kai&#39;s Blog</description>
+    <generator>Hugo -- 0.131.0</generator>
+    <language>zh</language>
+    <lastBuildDate>Tue, 17 Sep 2024 15:36:43 +0800</lastBuildDate>
+    <atom:link href="https://wangkai26.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>VSCode连接linux,配置zsh&#43;p10k终端,踩坑经验</title>
+      <link>https://wangkai26.github.io/posts/tech/linux/zsh/</link>
+      <pubDate>Tue, 17 Sep 2024 15:36:43 +0800</pubDate>
+      <guid>https://wangkai26.github.io/posts/tech/linux/zsh/</guid>
+      <description>本地环境：win10 + VSCode，使用 database 插件，ssh 连接服务器 为了配置这个网上看起来比较漂亮的终端，踩了一些坑，来来回回搞了快 5 个小时才搞</description>
+    </item>
+  </channel>
+</rss>

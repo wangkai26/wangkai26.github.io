@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Vim | Kai&#39;s Blog</title>
+<meta name="keywords" content="标签1">
+<meta name="description" content="报错： E325: ATTENTION Found a swap file by the name &ldquo;/var/tmp/hello.sh.swp&rdquo; owned by: ubuntu dated: Fri Oct 04 12:15:26 2024 file name: /data/exer_sh/hello.sh modified: no user name: ubuntu host name: VM-12-2-ubuntu process ID: 3404503 (STILL RUNNING) While opening file &ldquo;hello.sh&rdquo; CANNOT BE FOUND (1) Another program may be editing the same file. If this is the case, be careful not to end up with two different instances of">
+<meta name="author" content="kai">
+<link rel="canonical" href="https://wangkai26.github.io/posts/tech/linux/vim/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.af426310e146b199cc19c33acd2cd52502983e6f8cd40d5af80a041bf9ad8ee0.css" integrity="sha256-r0JjEOFGsZnMGcM6zSzVJQKYPm&#43;M1A1a&#43;AoEG/mtjuA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://wangkai26.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://wangkai26.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://wangkai26.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://wangkai26.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://wangkai26.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="zh" href="https://wangkai26.github.io/posts/tech/linux/vim/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+  
+
+<meta property="og:title" content="Vim" />
+<meta property="og:description" content="报错： E325: ATTENTION Found a swap file by the name &ldquo;/var/tmp/hello.sh.swp&rdquo; owned by: ubuntu dated: Fri Oct 04 12:15:26 2024 file name: /data/exer_sh/hello.sh modified: no user name: ubuntu host name: VM-12-2-ubuntu process ID: 3404503 (STILL RUNNING) While opening file &ldquo;hello.sh&rdquo; CANNOT BE FOUND (1) Another program may be editing the same file. If this is the case, be careful not to end up with two different instances of" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://wangkai26.github.io/posts/tech/linux/vim/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-09-22T13:21:29+08:00" />
+<meta property="article:modified_time" content="2024-09-22T13:21:29+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Vim"/>
+<meta name="twitter:description" content="报错： E325: ATTENTION Found a swap file by the name &ldquo;/var/tmp/hello.sh.swp&rdquo; owned by: ubuntu dated: Fri Oct 04 12:15:26 2024 file name: /data/exer_sh/hello.sh modified: no user name: ubuntu host name: VM-12-2-ubuntu process ID: 3404503 (STILL RUNNING) While opening file &ldquo;hello.sh&rdquo; CANNOT BE FOUND (1) Another program may be editing the same file. If this is the case, be careful not to end up with two different instances of"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://wangkai26.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "📚文章",
+      "item": "https://wangkai26.github.io/posts/tech/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Vim",
+      "item": "https://wangkai26.github.io/posts/tech/linux/vim/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Vim",
+  "name": "Vim",
+  "description": "报错： E325: ATTENTION Found a swap file by the name \u0026ldquo;/var/tmp/hello.sh.swp\u0026rdquo; owned by: ubuntu dated: Fri Oct 04 12:15:26 2024 file name: /data/exer_sh/hello.sh modified: no user name: ubuntu host name: VM-12-2-ubuntu process ID: 3404503 (STILL RUNNING) While opening file \u0026ldquo;hello.sh\u0026rdquo; CANNOT BE FOUND (1) Another program may be editing the same file. If this is the case, be careful not to end up with two different instances of",
+  "keywords": [
+    "标签1"
+  ],
+  "articleBody": "报错：\nE325: ATTENTION Found a swap file by the name “/var/tmp/hello.sh.swp” owned by: ubuntu dated: Fri Oct 04 12:15:26 2024 file name: /data/exer_sh/hello.sh modified: no user name: ubuntu host name: VM-12-2-ubuntu process ID: 3404503 (STILL RUNNING) While opening file “hello.sh” CANNOT BE FOUND (1) Another program may be editing the same file. If this is the case, be careful not to end up with two different instances of the same file when making changes. Quit, or continue with caution. (2) An edit session for this file crashed. If this is the case, use “:recover” or “vim -r hello.sh” to recover the changes (see “:help recovery”). If you did this already, delete the swap file “/var/tmp/hello.sh.swp” to avoid this message.\n第一个 shell 脚本\n1 vim hello.sh 第一行井号开头的内容代表 使用 zsh 执行命令\n1 2 3 4 5 6 #!/bin/zsh echo \"hello,world!\" date pwd whoami echo \"end\" 写完之后，使用 chmod 命令给文件添加执行权限，否则执行时会遇到报错：zsh: permission denied\n1 chmod a+x hello.sh 切换根用户执行脚本文件，sudo su\n执行结果：\n1 2 3 4 5 6 VM-12-2-ubuntu# ./hello.sh hello,world! Sat Oct 5 01:35:58 PM CST 2024 /data/exer_sh root end 符合预期\n这就是一个最简单的脚本的执行过程\nshell 脚本支持分支、条件判断 和 循环等编程语言中才有的特性，也可以定义函数和变量，可以调用系统命令以及其他程序，还可以进行文件读写等操作，是非常强大的工具。\n",
+  "wordCount" : "340",
+  "inLanguage": "zh",
+  "datePublished": "2024-09-22T13:21:29+08:00",
+  "dateModified": "2024-09-22T13:21:29+08:00",
+  "author":[{
+    "@type": "Person",
+    "name": "kai"
+  }],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://wangkai26.github.io/posts/tech/linux/vim/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kai's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://wangkai26.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://wangkai26.github.io/" accesskey="h" title="Kai&#39;s Blog (Alt + H)">Kai&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://wangkai26.github.io/search" title="🔍搜索 (Alt &#43; /)" accesskey=/>
+                    <span>🔍搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://wangkai26.github.io/" title="🏠主页">
+                    <span>🏠主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://wangkai26.github.io/posts" title="📚文章">
+                    <span>📚文章</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://wangkai26.github.io/archives/" title="⏱时间轴">
+                    <span>⏱时间轴</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://wangkai26.github.io/tags" title="🔖标签">
+                    <span>🔖标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://wangkai26.github.io/about" title="🙋🏻‍♂️关于">
+                    <span>🙋🏻‍♂️关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://wangkai26.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://wangkai26.github.io/posts/">Posts</a>&nbsp;»&nbsp;<a href="https://wangkai26.github.io/posts/tech/">📚文章</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Vim
+    </h1>
+    <div class="post-meta"><span title='2024-09-22 13:21:29 +0800 CST'>2024-09-22</span>&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;kai
+
+</div>
+  </header> 
+  <div class="post-content"><p>报错：</p>
+<blockquote>
+<p>E325: ATTENTION
+Found a swap file by the name &ldquo;/var/tmp/hello.sh.swp&rdquo;
+owned by: ubuntu   dated: Fri Oct 04 12:15:26 2024
+file name: /data/exer_sh/hello.sh
+modified: no
+user name: ubuntu   host name: VM-12-2-ubuntu
+process ID: 3404503 (STILL RUNNING)
+While opening file &ldquo;hello.sh&rdquo;
+CANNOT BE FOUND
+(1) Another program may be editing the same file.  If this is the case,
+be careful not to end up with two different instances of the same
+file when making changes.  Quit, or continue with caution.
+(2) An edit session for this file crashed.
+If this is the case, use &ldquo;:recover&rdquo; or &ldquo;vim -r hello.sh&rdquo;
+to recover the changes (see &ldquo;:help recovery&rdquo;).
+If you did this already, delete the swap file &ldquo;/var/tmp/hello.sh.swp&rdquo;
+to avoid this message.</p>
+</blockquote>
+<p>第一个 shell 脚本</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">vim hello.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>第一行井号开头的内容代表 使用 zsh 执行命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="cp">#!/bin/zsh
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="nb">echo</span> <span class="s2">&#34;hello,world!&#34;</span>
+</span></span><span class="line"><span class="cl">date
+</span></span><span class="line"><span class="cl"><span class="nb">pwd</span>
+</span></span><span class="line"><span class="cl">whoami
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;end&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>写完之后，使用 chmod 命令给文件添加执行权限，否则执行时会遇到报错：zsh: permission denied</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">chmod a+x hello.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>切换根用户执行脚本文件，sudo su</p>
+<p>执行结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">VM-12-2-ubuntu# ./hello.sh 
+</span></span><span class="line"><span class="cl">hello,world!
+</span></span><span class="line"><span class="cl">Sat Oct  <span class="m">5</span> 01:35:58 PM CST <span class="m">2024</span>
+</span></span><span class="line"><span class="cl">/data/exer_sh
+</span></span><span class="line"><span class="cl">root
+</span></span><span class="line"><span class="cl">end
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>符合预期</p>
+<p>这就是一个最简单的脚本的执行过程</p>
+<p>shell 脚本支持分支、条件判断 和 循环等编程语言中才有的特性，也可以定义函数和变量，可以调用系统命令以及其他程序，还可以进行文件读写等操作，是非常强大的工具。</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://wangkai26.github.io/tags/%E6%A0%87%E7%AD%BE1/">标签1</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://wangkai26.github.io/posts/tools/vscode/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>Vscode</span>
+  </a>
+  <a class="next" href="https://wangkai26.github.io/posts/tech/linux/linux%E4%B9%8Btmux/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>Linux之tmux</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="https://wangkai26.github.io/">Kai&#39;s Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

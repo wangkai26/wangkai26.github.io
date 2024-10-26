@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>解包操作符 | Kai&#39;s Blog</title>
+<meta name="keywords" content="标签1">
+<meta name="description" content="解包就是把可迭代对象（如列表lists, 元组tuples和字典dictinaries）的内容取出来的操作。 * 和 ** 通常用于函数定义和调用时处理">
+<meta name="author" content="kai">
+<link rel="canonical" href="https://wangkai26.github.io/posts/python%E7%89%B9%E6%80%A7%E5%92%8C%E5%90%84%E7%A7%8D%E5%8C%85/%E8%A7%A3%E5%8C%85%E6%93%8D%E4%BD%9C%E7%AC%A6/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.af426310e146b199cc19c33acd2cd52502983e6f8cd40d5af80a041bf9ad8ee0.css" integrity="sha256-r0JjEOFGsZnMGcM6zSzVJQKYPm&#43;M1A1a&#43;AoEG/mtjuA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://wangkai26.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://wangkai26.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://wangkai26.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://wangkai26.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://wangkai26.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="zh" href="https://wangkai26.github.io/posts/python%E7%89%B9%E6%80%A7%E5%92%8C%E5%90%84%E7%A7%8D%E5%8C%85/%E8%A7%A3%E5%8C%85%E6%93%8D%E4%BD%9C%E7%AC%A6/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+  
+
+<meta property="og:title" content="解包操作符" />
+<meta property="og:description" content="解包就是把可迭代对象（如列表lists, 元组tuples和字典dictinaries）的内容取出来的操作。 * 和 ** 通常用于函数定义和调用时处理" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://wangkai26.github.io/posts/python%E7%89%B9%E6%80%A7%E5%92%8C%E5%90%84%E7%A7%8D%E5%8C%85/%E8%A7%A3%E5%8C%85%E6%93%8D%E4%BD%9C%E7%AC%A6/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-10-19T15:49:32+08:00" />
+<meta property="article:modified_time" content="2024-10-19T15:49:32+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="解包操作符"/>
+<meta name="twitter:description" content="解包就是把可迭代对象（如列表lists, 元组tuples和字典dictinaries）的内容取出来的操作。 * 和 ** 通常用于函数定义和调用时处理"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://wangkai26.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "解包操作符",
+      "item": "https://wangkai26.github.io/posts/python%E7%89%B9%E6%80%A7%E5%92%8C%E5%90%84%E7%A7%8D%E5%8C%85/%E8%A7%A3%E5%8C%85%E6%93%8D%E4%BD%9C%E7%AC%A6/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "解包操作符",
+  "name": "解包操作符",
+  "description": "解包就是把可迭代对象（如列表lists, 元组tuples和字典dictinaries）的内容取出来的操作。 * 和 ** 通常用于函数定义和调用时处理",
+  "keywords": [
+    "标签1"
+  ],
+  "articleBody": "解包就是把可迭代对象（如列表lists, 元组tuples和字典dictinaries）的内容取出来的操作。\n* 和 ** 通常用于函数定义和调用时处理可变数量的参数。\nPython 中有两个特殊的操作符：* 和 **，它们有两种用途：参数解包和序列解包。\n序列解包：用于将序列（如列表或元组）中的元素解包为独立的参数 参数解包：在函数定义中，* 用于收集额外的位置参数到一个元组中，而 ** 用于收集额外的关键字参数到一个字典中。 它们通常用于函数定义和调用时处理可变数量的参数。\n* 操作符 在函数定义中使用：当在函数定义中使用时，* 用于将可变数量的非关键字参数打包成一个元组。例如：\n1 2 3 4 5 def my_function(*args): for arg in args: print(arg) my_function(1, 2, 3) 在这个例子中，my_function 可以接收任意数量的参数，这些参数会被收集到一个名为 args 的元组中。\n在函数调用中使用：当在函数调用中使用时，* 用于将一个序列解包成单个元素。例如：\n1 2 3 4 5 def my_function(a, b, c): print(a, b, c) args = (1, 2, 3) my_function(*args) 这里，*args 会解包为 1, 2, 3，并传递给 my_function。\n** 操作符 在函数定义中使用：当在函数定义中使用时，** 用于将可变数量的关键字参数打包成一个字典。例如：\n1 2 3 4 5 def my_function(**kwargs): for key, value in kwargs.items(): print(f\"{key}: {value}\") my_function(name=\"Alice\", age=30) 在这个例子中，my_function 可以接收任意数量的关键字参数，这些参数会被收集到一个名为 kwargs 的字典中。\n在函数调用中使用：当在函数调用中使用时，** 用于将一个字典解包为关键字参数。例如：\n1 2 3 4 5 def my_function(name, age): print(f\"{name} is {age} years old\") kwargs = {\"name\": \"Bob\", \"age\": 25} my_function(**kwargs) 这里，**kwargs 会解包字典的内容，并传递给 my_function 作为关键字参数。\n总结来说，* 和 ** 操作符可以帮助你在函数中灵活地处理不定数量的参数，使得函数更加通用和易用。\n解包列表或元组 将列表或元组中的元素解包为独立参数。\n1 2 3 4 5 6 def add(a, b, c): return a + b + c numbers = [1, 2, 3] result = add(*numbers) # 等同于 add(1, 2, 3) print(result) # 输出 6 合并列表或元组 将多个列表或元组合并后作为参数传递。\n1 2 3 4 5 6 7 def add_all(*args): return sum(args) numbers1 = [1, 2, 3] numbers2 = [4, 5, 6] result = add_all(*numbers1, *numbers2) # 等同于 add_all(1, 2, 3, 4, 5, 6) print(result) # 输出 21 与内置函数结合 使用 ** 可以与内置函数如 dict 结合，创建字典。\n1 2 3 user_data = ['name', 'Charlie', 'age', 40] user_dict = dict(zip(*[iter(user_data)]*2)) print(user_dict) 以上例子可能有些难以理解，可以先了解 zip():\nzip()函数 zip 函数用于将可迭代的对象(如列表、元组、字符串)作为参数，用于将多个可迭代对象（如列表、元组、字符串等）“压缩” 成一个元组的迭代器。每个元组包含输入的可迭代对象在相同位置的元素。使用zip()可以轻松地将多个序列中对应的元素组合在一起。\n1 2 3 4 list1 = [1, 2, 3] list2 = ['a', 'b', 'c'] zipped = zip(list1, list2) print(list(zipped)) # [(1, 'a'), (2, 'b'), (3, 'c')] 接下来我们逐步解析 dict(zip(*[iter(user_data)]*2))：\niter(user_data) 将列表 user_data 转换为迭代器。 [iter(user_data)]*2 将迭代器重复两次，得到 [iter(user_data), iter(user_data)]。 *[iter(user_data)]*2: 将列表解包为两个都是 iter(user_data) 的独立参数。 zip(*[iter(user_data)]*2): 将参数列表打包为元组的迭代器，由于传入的两个参数是同一个迭代器，所以每解析完一个键，迭代器就移动到下一个元素将下一个元素作为值，由此将 user_data 列表中的元素两两配对。 dict(zip(*[iter(user_data)]*2)): dict() 函数接受一个键值对序列，并返回一个新的字典。 解包 解包字典 将字典中的键值对解包为关键字参数。\n1 2 3 4 5 def create_user(name, age, city): print(f\"Name: {name}, Age: {age}, City: {city}\") user_info = {'name': 'Bob', 'age': 25, 'city': 'Boston'} create_user(**user_info) # 等同于 create_user(name='Bob', age=25, city='Boston') 动态函数调用 动态地将字典传递给不同的函数。\n1 2 3 4 5 6 7 8 def send_email(to, subject, body): print(f\"Sending email to {to}: {subject}\\n{body}\") # 邮件信息 email_info = {'to': 'alice@example.com', 'subject': 'Meeting', 'body': 'Let\\'s meet up today.'} # 动态发送邮件 send_email(**email_info) ",
+  "wordCount" : "1336",
+  "inLanguage": "zh",
+  "datePublished": "2024-10-19T15:49:32+08:00",
+  "dateModified": "2024-10-19T15:49:32+08:00",
+  "author":[{
+    "@type": "Person",
+    "name": "kai"
+  }],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://wangkai26.github.io/posts/python%E7%89%B9%E6%80%A7%E5%92%8C%E5%90%84%E7%A7%8D%E5%8C%85/%E8%A7%A3%E5%8C%85%E6%93%8D%E4%BD%9C%E7%AC%A6/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kai's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://wangkai26.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://wangkai26.github.io/" accesskey="h" title="Kai&#39;s Blog (Alt + H)">Kai&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://wangkai26.github.io/search" title="🔍搜索 (Alt &#43; /)" accesskey=/>
+                    <span>🔍搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://wangkai26.github.io/" title="🏠主页">
+                    <span>🏠主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://wangkai26.github.io/posts" title="📚文章">
+                    <span>📚文章</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://wangkai26.github.io/archives/" title="⏱时间轴">
+                    <span>⏱时间轴</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://wangkai26.github.io/tags" title="🔖标签">
+                    <span>🔖标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://wangkai26.github.io/about" title="🙋🏻‍♂️关于">
+                    <span>🙋🏻‍♂️关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://wangkai26.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://wangkai26.github.io/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      解包操作符
+    </h1>
+    <div class="post-meta"><span title='2024-10-19 15:49:32 +0800 CST'>2024-10-19</span>&nbsp;·&nbsp;3 分钟&nbsp;·&nbsp;kai
+
+</div>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">目录</span>
+            </summary>
+
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#-%e6%93%8d%e4%bd%9c%e7%ac%a6" aria-label="* 操作符"><code>*</code> 操作符</a></li>
+                    <li>
+                        <a href="#-%e6%93%8d%e4%bd%9c%e7%ac%a6-1" aria-label="** 操作符"><code>**</code> 操作符</a><ul>
+                            
+                    <li>
+                        <a href="#%e8%a7%a3%e5%8c%85%e5%88%97%e8%a1%a8%e6%88%96%e5%85%83%e7%bb%84" aria-label="解包列表或元组">解包列表或元组</a></li>
+                    <li>
+                        <a href="#%e5%90%88%e5%b9%b6%e5%88%97%e8%a1%a8%e6%88%96%e5%85%83%e7%bb%84" aria-label="合并列表或元组">合并列表或元组</a></li>
+                    <li>
+                        <a href="#%e4%b8%8e%e5%86%85%e7%bd%ae%e5%87%bd%e6%95%b0%e7%bb%93%e5%90%88" aria-label="与内置函数结合">与内置函数结合</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e8%a7%a3%e5%8c%85" aria-label="解包">解包</a><ul>
+                            
+                    <li>
+                        <a href="#%e8%a7%a3%e5%8c%85%e5%ad%97%e5%85%b8" aria-label="解包字典">解包字典</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e5%8a%a8%e6%80%81%e5%87%bd%e6%95%b0%e8%b0%83%e7%94%a8" aria-label="动态函数调用">动态函数调用</a>
+                    </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
+  <div class="post-content"><p>解包就是把可迭代对象（如列表lists, 元组tuples和字典dictinaries）的内容取出来的操作。</p>
+<p>* 和 ** 通常用于函数定义和调用时处理可变数量的参数。</p>
+<p>Python 中有两个特殊的操作符：<code>*</code> 和 <code>**</code>，它们有两种用途：参数解包和序列解包。</p>
+<ul>
+<li>序列解包：用于将序列（如列表或元组）中的元素解包为独立的参数</li>
+<li>参数解包：在函数定义中，<code>*</code> 用于收集额外的位置参数到一个元组中，而 <code>**</code> 用于收集额外的关键字参数到一个字典中。</li>
+</ul>
+<p>它们通常用于函数定义和调用时处理可变数量的参数。</p>
+<h2 id="-操作符"><code>*</code> 操作符<a hidden class="anchor" aria-hidden="true" href="#-操作符">#</a></h2>
+<ul>
+<li>
+<p><strong>在函数定义中使用</strong>：当在函数定义中使用时，<code>*</code> 用于将可变数量的非关键字参数打包成一个元组。例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">my_function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">my_function</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在这个例子中，<code>my_function</code> 可以接收任意数量的参数，这些参数会被收集到一个名为 <code>args</code> 的元组中。</p>
+</li>
+<li>
+<p><strong>在函数调用中使用</strong>：当在函数调用中使用时，<code>*</code> 用于将一个序列解包成单个元素。例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">my_function</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">my_function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里，<code>*args</code> 会解包为 <code>1, 2, 3</code>，并传递给 <code>my_function</code>。</p>
+</li>
+</ul>
+<h2 id="-操作符-1"><code>**</code> 操作符<a hidden class="anchor" aria-hidden="true" href="#-操作符-1">#</a></h2>
+<ul>
+<li>
+<p><strong>在函数定义中使用</strong>：当在函数定义中使用时，<code>**</code> 用于将可变数量的关键字参数打包成一个字典。例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">my_function</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">my_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&#34;Alice&#34;</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在这个例子中，<code>my_function</code> 可以接收任意数量的关键字参数，这些参数会被收集到一个名为 <code>kwargs</code> 的字典中。</p>
+</li>
+<li>
+<p><strong>在函数调用中使用</strong>：当在函数调用中使用时，<code>**</code> 用于将一个字典解包为关键字参数。例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">my_function</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2"> years old&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Bob&#34;</span><span class="p">,</span> <span class="s2">&#34;age&#34;</span><span class="p">:</span> <span class="mi">25</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">my_function</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里，<code>**kwargs</code> 会解包字典的内容，并传递给 <code>my_function</code> 作为关键字参数。</p>
+</li>
+</ul>
+<p>总结来说，<code>*</code> 和 <code>**</code> 操作符可以帮助你在函数中灵活地处理不定数量的参数，使得函数更加通用和易用。</p>
+<h3 id="解包列表或元组">解包列表或元组<a hidden class="anchor" aria-hidden="true" href="#解包列表或元组">#</a></h3>
+<p>将列表或元组中的元素解包为独立参数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">result</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="o">*</span><span class="n">numbers</span><span class="p">)</span>  <span class="c1"># 等同于 add(1, 2, 3)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># 输出 6</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="合并列表或元组">合并列表或元组<a hidden class="anchor" aria-hidden="true" href="#合并列表或元组">#</a></h3>
+<p>将多个列表或元组合并后作为参数传递。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">add_all</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">numbers1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">numbers2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">result</span> <span class="o">=</span> <span class="n">add_all</span><span class="p">(</span><span class="o">*</span><span class="n">numbers1</span><span class="p">,</span> <span class="o">*</span><span class="n">numbers2</span><span class="p">)</span>  <span class="c1"># 等同于 add_all(1, 2, 3, 4, 5, 6)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># 输出 21</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="与内置函数结合">与内置函数结合<a hidden class="anchor" aria-hidden="true" href="#与内置函数结合">#</a></h3>
+<p>使用 <code>**</code> 可以与内置函数如 <code>dict</code> 结合，创建字典。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl"><span class="n">user_data</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;Charlie&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">user_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="nb">iter</span><span class="p">(</span><span class="n">user_data</span><span class="p">)]</span><span class="o">*</span><span class="mi">2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">user_dict</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>以上例子可能有些难以理解，可以先了解 <code>zip()</code>:</p>
+<blockquote>
+<p><strong>zip()函数</strong>
+zip 函数用于将可迭代的对象(如列表、元组、字符串)作为参数，用于将多个可迭代对象（如列表、元组、字符串等）“压缩” 成一个元组的迭代器。每个元组包含输入的可迭代对象在相同位置的元素。使用zip()可以轻松地将多个序列中对应的元素组合在一起。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl"><span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">list2</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">zipped</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span> <span class="n">list2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">zipped</span><span class="p">))</span>  <span class="c1"># [(1, &#39;a&#39;), (2, &#39;b&#39;), (3, &#39;c&#39;)]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>接下来我们逐步解析 <code>dict(zip(*[iter(user_data)]*2))</code>：</p>
+<ul>
+<li><code>iter(user_data)</code> 将列表 <code>user_data</code> 转换为迭代器。</li>
+<li><code>[iter(user_data)]*2</code> 将迭代器重复两次，得到 <code>[iter(user_data), iter(user_data)]</code>。</li>
+<li><code>*[iter(user_data)]*2</code>: 将列表解包为两个都是 <code>iter(user_data)</code> 的独立参数。</li>
+<li><code>zip(*[iter(user_data)]*2)</code>: 将参数列表打包为元组的迭代器，由于传入的两个参数是同一个迭代器，所以每解析完一个键，迭代器就移动到下一个元素将下一个元素作为值，由此将 <code>user_data</code> 列表中的元素两两配对。</li>
+<li><code>dict(zip(*[iter(user_data)]*2))</code>: <code>dict()</code> 函数接受一个键值对序列，并返回一个新的字典。</li>
+</ul>
+<h2 id="解包">解包<a hidden class="anchor" aria-hidden="true" href="#解包">#</a></h2>
+<h3 id="解包字典">解包字典<a hidden class="anchor" aria-hidden="true" href="#解包字典">#</a></h3>
+<p>将字典中的键值对解包为关键字参数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">create_user</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">city</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Name: </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">, Age: </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2">, City: </span><span class="si">{</span><span class="n">city</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">user_info</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="s1">&#39;Boston&#39;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">create_user</span><span class="p">(</span><span class="o">**</span><span class="n">user_info</span><span class="p">)</span>  <span class="c1"># 等同于 create_user(name=&#39;Bob&#39;, age=25, city=&#39;Boston&#39;)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="动态函数调用">动态函数调用<a hidden class="anchor" aria-hidden="true" href="#动态函数调用">#</a></h2>
+<p>动态地将字典传递给不同的函数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">send_email</span><span class="p">(</span><span class="n">to</span><span class="p">,</span> <span class="n">subject</span><span class="p">,</span> <span class="n">body</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Sending email to </span><span class="si">{</span><span class="n">to</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">body</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 邮件信息</span>
+</span></span><span class="line"><span class="cl"><span class="n">email_info</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;to&#39;</span><span class="p">:</span> <span class="s1">&#39;alice@example.com&#39;</span><span class="p">,</span> <span class="s1">&#39;subject&#39;</span><span class="p">:</span> <span class="s1">&#39;Meeting&#39;</span><span class="p">,</span> <span class="s1">&#39;body&#39;</span><span class="p">:</span> <span class="s1">&#39;Let</span><span class="se">\&#39;</span><span class="s1">s meet up today.&#39;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 动态发送邮件</span>
+</span></span><span class="line"><span class="cl"><span class="n">send_email</span><span class="p">(</span><span class="o">**</span><span class="n">email_info</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://wangkai26.github.io/tags/%E6%A0%87%E7%AD%BE1/">标签1</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://wangkai26.github.io/posts/database/mysql%E5%9F%BA%E7%A1%80/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>MySQL基础</span>
+  </a>
+  <a class="next" href="https://wangkai26.github.io/posts/life/%E9%AD%94%E6%96%B9/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>魔方</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="https://wangkai26.github.io/">Kai&#39;s Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

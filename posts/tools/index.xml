@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tools 编程工具 on Kai&#39;s Blog</title>
+    <link>https://wangkai26.github.io/posts/tools/</link>
+    <description>Recent content in Tools 编程工具 on Kai&#39;s Blog</description>
+    <generator>Hugo -- 0.131.0</generator>
+    <language>zh</language>
+    <lastBuildDate>Wed, 09 Oct 2024 21:54:18 +0800</lastBuildDate>
+    <atom:link href="https://wangkai26.github.io/posts/tools/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>编码</title>
+      <link>https://wangkai26.github.io/posts/tools/%E7%BC%96%E7%A0%81/</link>
+      <pubDate>Wed, 09 Oct 2024 21:54:18 +0800</pubDate>
+      <guid>https://wangkai26.github.io/posts/tools/%E7%BC%96%E7%A0%81/</guid>
+      <description>请帮我分析一段代码，代码如下： 1 2 3 4 5 6 with open(filename, &amp;#39;rb&amp;#39;) as fp: ff=fp.read() # print(ff) hexstr = binascii.b2a_hex(ff).decode() print(hexstr) ff 是我读取到的内容，直接打印 ff 会得到 二进制数据，通过 binascii.b2a_hex(ff).decode() 会得到十六进制字符串</description>
+    </item>
+    <item>
+      <title>Vscode</title>
+      <link>https://wangkai26.github.io/posts/tools/vscode/</link>
+      <pubDate>Sat, 05 Oct 2024 14:06:41 +0800</pubDate>
+      <guid>https://wangkai26.github.io/posts/tools/vscode/</guid>
+      <description>VScode 常用插件 一、普适 Chinese (Simplified) (简体中文) Language Pack for Visu 为 VS Code提供本地化界面 二、Python相关 Python 三、前端开发 https://blog.csdn.net/weixin_43248785/article/details/105095440 open in browser 这允许您在默认浏览器或应用程序</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>python 特性 on Kai&#39;s Blog</title>
+    <link>https://wangkai26.github.io/posts/python%E7%89%B9%E6%80%A7%E5%92%8C%E5%90%84%E7%A7%8D%E5%8C%85/</link>
+    <description>Recent content in python 特性 on Kai&#39;s Blog</description>
+    <generator>Hugo -- 0.131.0</generator>
+    <language>zh</language>
+    <lastBuildDate>Sat, 19 Oct 2024 16:32:13 +0800</lastBuildDate>
+    <atom:link href="https://wangkai26.github.io/posts/python%E7%89%B9%E6%80%A7%E5%92%8C%E5%90%84%E7%A7%8D%E5%8C%85/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>函数式编程</title>
+      <link>https://wangkai26.github.io/posts/python%E7%89%B9%E6%80%A7%E5%92%8C%E5%90%84%E7%A7%8D%E5%8C%85/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/</link>
+      <pubDate>Sat, 19 Oct 2024 16:32:13 +0800</pubDate>
+      <guid>https://wangkai26.github.io/posts/python%E7%89%B9%E6%80%A7%E5%92%8C%E5%90%84%E7%A7%8D%E5%8C%85/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/</guid>
+      <description>什么是 free loop？ 在Python中，&amp;ldquo;loop free&amp;rdquo; 通常不是一个正式的术语。然而，它可能会指代一些编程习惯或技术，它们旨在避免显式使</description>
+    </item>
+    <item>
+      <title>解包操作符</title>
+      <link>https://wangkai26.github.io/posts/python%E7%89%B9%E6%80%A7%E5%92%8C%E5%90%84%E7%A7%8D%E5%8C%85/%E8%A7%A3%E5%8C%85%E6%93%8D%E4%BD%9C%E7%AC%A6/</link>
+      <pubDate>Sat, 19 Oct 2024 15:49:32 +0800</pubDate>
+      <guid>https://wangkai26.github.io/posts/python%E7%89%B9%E6%80%A7%E5%92%8C%E5%90%84%E7%A7%8D%E5%8C%85/%E8%A7%A3%E5%8C%85%E6%93%8D%E4%BD%9C%E7%AC%A6/</guid>
+      <description>解包就是把可迭代对象（如列表lists, 元组tuples和字典dictinaries）的内容取出来的操作。 * 和 ** 通常用于函数定义和调用时处理</description>
+    </item>
+  </channel>
+</rss>

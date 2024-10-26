@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>📚文章 on Kai&#39;s Blog</title>
+    <link>https://wangkai26.github.io/posts/tech/</link>
+    <description>Recent content in 📚文章 on Kai&#39;s Blog</description>
+    <generator>Hugo -- 0.131.0</generator>
+    <language>zh</language>
+    <lastBuildDate>Sun, 22 Sep 2024 13:21:29 +0800</lastBuildDate>
+    <atom:link href="https://wangkai26.github.io/posts/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vim</title>
+      <link>https://wangkai26.github.io/posts/tech/linux/vim/</link>
+      <pubDate>Sun, 22 Sep 2024 13:21:29 +0800</pubDate>
+      <guid>https://wangkai26.github.io/posts/tech/linux/vim/</guid>
+      <description>报错： E325: ATTENTION Found a swap file by the name &amp;ldquo;/var/tmp/hello.sh.swp&amp;rdquo; owned by: ubuntu dated: Fri Oct 04 12:15:26 2024 file name: /data/exer_sh/hello.sh modified: no user name: ubuntu host name: VM-12-2-ubuntu process ID: 3404503 (STILL RUNNING) While opening file &amp;ldquo;hello.sh&amp;rdquo; CANNOT BE FOUND (1) Another program may be editing the same file. If this is the case, be careful not to end up with two different instances of</description>
+    </item>
+    <item>
+      <title>Linux之tmux</title>
+      <link>https://wangkai26.github.io/posts/tech/linux/linux%E4%B9%8Btmux/</link>
+      <pubDate>Fri, 20 Sep 2024 21:15:39 +0800</pubDate>
+      <guid>https://wangkai26.github.io/posts/tech/linux/linux%E4%B9%8Btmux/</guid>
+      <description>tmux cd # 可快速切换到当前用户根目录下 tmux 安装 tmux 1 sudo apt-get install tmux 新建 tmux 终端 tmux 常用命令 1 2 3 4 5 6 7 8 9 10 11 12 13 #列出创建的 tmux 进程 tmux list-sessions # 创建新的 sessi</description>
+    </item>
+    <item>
+      <title>VSCode连接linux,配置zsh&#43;p10k终端,踩坑经验</title>
+      <link>https://wangkai26.github.io/posts/tech/linux/zsh/</link>
+      <pubDate>Tue, 17 Sep 2024 15:36:43 +0800</pubDate>
+      <guid>https://wangkai26.github.io/posts/tech/linux/zsh/</guid>
+      <description>本地环境：win10 + VSCode，使用 database 插件，ssh 连接服务器 为了配置这个网上看起来比较漂亮的终端，踩了一些坑，来来回回搞了快 5 个小时才搞</description>
+    </item>
+    <item>
+      <title>Nginx 理论知识</title>
+      <link>https://wangkai26.github.io/posts/tech/nginx/principles/</link>
+      <pubDate>Mon, 16 Sep 2024 21:46:46 +0800</pubDate>
+      <guid>https://wangkai26.github.io/posts/tech/nginx/principles/</guid>
+      <description>nginx 理论知识</description>
+    </item>
+    <item>
+      <title>Practice</title>
+      <link>https://wangkai26.github.io/posts/tech/regex/practice/</link>
+      <pubDate>Mon, 16 Sep 2024 21:37:33 +0800</pubDate>
+      <guid>https://wangkai26.github.io/posts/tech/regex/practice/</guid>
+      <description>正则表达式(Regular Expression)是一种文本模式，包括普通字符（例如，a 到 z 之间的字母）和特殊字符（称为&amp;quot;元字符&amp;q</description>
+    </item>
+    <item>
+      <title>Principles</title>
+      <link>https://wangkai26.github.io/posts/tech/regex/principles/</link>
+      <pubDate>Mon, 16 Sep 2024 21:37:21 +0800</pubDate>
+      <guid>https://wangkai26.github.io/posts/tech/regex/principles/</guid>
+      <description>正则表达式(Regular Expression)是一种文本模式，包括普通字符（例如，a 到 z 之间的字母）和特殊字符（称为&amp;quot;元字符&amp;q</description>
+    </item>
+    <item>
+      <title>Demo2</title>
+      <link>https://wangkai26.github.io/posts/tech/demo2/</link>
+      <pubDate>Mon, 16 Sep 2024 02:23:30 +0800</pubDate>
+      <guid>https://wangkai26.github.io/posts/tech/demo2/</guid>
+      <description>demo2</description>
+    </item>
+    <item>
+      <title>Demo1</title>
+      <link>https://wangkai26.github.io/posts/tech/demo1/</link>
+      <pubDate>Mon, 16 Sep 2024 01:46:54 +0800</pubDate>
+      <guid>https://wangkai26.github.io/posts/tech/demo1/</guid>
+      <description>demo1 试一下 abc 的啊发 edf one two three fasf one two three</description>
+    </item>
+  </channel>
+</rss>

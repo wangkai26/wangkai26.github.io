@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tags on Kai&#39;s Blog</title>
+    <link>https://wangkai26.github.io/tags/</link>
+    <description>Recent content in Tags on Kai&#39;s Blog</description>
+    <generator>Hugo -- 0.131.0</generator>
+    <language>zh</language>
+    <lastBuildDate>Tue, 22 Oct 2024 21:29:41 +0800</lastBuildDate>
+    <atom:link href="https://wangkai26.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>标签1</title>
+      <link>https://wangkai26.github.io/tags/%E6%A0%87%E7%AD%BE1/</link>
+      <pubDate>Tue, 22 Oct 2024 21:29:41 +0800</pubDate>
+      <guid>https://wangkai26.github.io/tags/%E6%A0%87%E7%AD%BE1/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tools</title>
+      <link>https://wangkai26.github.io/tags/tools/</link>
+      <pubDate>Sat, 05 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>https://wangkai26.github.io/tags/tools/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>https://wangkai26.github.io/tags/linux/</link>
+      <pubDate>Tue, 17 Sep 2024 15:36:43 +0800</pubDate>
+      <guid>https://wangkai26.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Zsh</title>
+      <link>https://wangkai26.github.io/tags/zsh/</link>
+      <pubDate>Tue, 17 Sep 2024 15:36:43 +0800</pubDate>
+      <guid>https://wangkai26.github.io/tags/zsh/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hugo</title>
+      <link>https://wangkai26.github.io/tags/hugo/</link>
+      <pubDate>Tue, 17 Sep 2024 15:31:08 +0800</pubDate>
+      <guid>https://wangkai26.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>标签2</title>
+      <link>https://wangkai26.github.io/tags/%E6%A0%87%E7%AD%BE2/</link>
+      <pubDate>Mon, 16 Sep 2024 21:54:53 +0800</pubDate>
+      <guid>https://wangkai26.github.io/tags/%E6%A0%87%E7%AD%BE2/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Nginx</title>
+      <link>https://wangkai26.github.io/tags/nginx/</link>
+      <pubDate>Mon, 16 Sep 2024 21:46:46 +0800</pubDate>
+      <guid>https://wangkai26.github.io/tags/nginx/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Regex</title>
+      <link>https://wangkai26.github.io/tags/regex/</link>
+      <pubDate>Mon, 16 Sep 2024 21:37:21 +0800</pubDate>
+      <guid>https://wangkai26.github.io/tags/regex/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>A</title>
+      <link>https://wangkai26.github.io/tags/a/</link>
+      <pubDate>Mon, 16 Sep 2024 21:16:58 +0800</pubDate>
+      <guid>https://wangkai26.github.io/tags/a/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>B</title>
+      <link>https://wangkai26.github.io/tags/b/</link>
+      <pubDate>Mon, 16 Sep 2024 21:16:58 +0800</pubDate>
+      <guid>https://wangkai26.github.io/tags/b/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Go</title>
+      <link>https://wangkai26.github.io/tags/go/</link>
+      <pubDate>Mon, 16 Sep 2024 02:23:30 +0800</pubDate>
+      <guid>https://wangkai26.github.io/tags/go/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>https://wangkai26.github.io/tags/python/</link>
+      <pubDate>Mon, 16 Sep 2024 02:23:30 +0800</pubDate>
+      <guid>https://wangkai26.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mysql</title>
+      <link>https://wangkai26.github.io/tags/mysql/</link>
+      <pubDate>Thu, 05 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>https://wangkai26.github.io/tags/mysql/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

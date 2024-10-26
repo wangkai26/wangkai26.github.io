@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Git实践 | Kai&#39;s Blog</title>
+<meta name="keywords" content="标签1">
+<meta name="description" content="实践一、 我的 github page 仓库，有一个 main 分支 我本地新建了一个仓库，想把内容完全覆盖掉仓库 初始化本地仓库 git init ，初始化本地 git 仓库 1 git init 添加远程仓库链接 将新">
+<meta name="author" content="kai">
+<link rel="canonical" href="https://wangkai26.github.io/posts/git/git%E5%AE%9E%E8%B7%B5/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.af426310e146b199cc19c33acd2cd52502983e6f8cd40d5af80a041bf9ad8ee0.css" integrity="sha256-r0JjEOFGsZnMGcM6zSzVJQKYPm&#43;M1A1a&#43;AoEG/mtjuA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://wangkai26.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://wangkai26.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://wangkai26.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://wangkai26.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://wangkai26.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="zh" href="https://wangkai26.github.io/posts/git/git%E5%AE%9E%E8%B7%B5/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+  
+
+<meta property="og:title" content="Git实践" />
+<meta property="og:description" content="实践一、 我的 github page 仓库，有一个 main 分支 我本地新建了一个仓库，想把内容完全覆盖掉仓库 初始化本地仓库 git init ，初始化本地 git 仓库 1 git init 添加远程仓库链接 将新" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://wangkai26.github.io/posts/git/git%E5%AE%9E%E8%B7%B5/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-10-22T21:29:41+08:00" />
+<meta property="article:modified_time" content="2024-10-22T21:29:41+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Git实践"/>
+<meta name="twitter:description" content="实践一、 我的 github page 仓库，有一个 main 分支 我本地新建了一个仓库，想把内容完全覆盖掉仓库 初始化本地仓库 git init ，初始化本地 git 仓库 1 git init 添加远程仓库链接 将新"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://wangkai26.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "git",
+      "item": "https://wangkai26.github.io/posts/git/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Git实践",
+      "item": "https://wangkai26.github.io/posts/git/git%E5%AE%9E%E8%B7%B5/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Git实践",
+  "name": "Git实践",
+  "description": "实践一、 我的 github page 仓库，有一个 main 分支 我本地新建了一个仓库，想把内容完全覆盖掉仓库 初始化本地仓库 git init ，初始化本地 git 仓库 1 git init 添加远程仓库链接 将新",
+  "keywords": [
+    "标签1"
+  ],
+  "articleBody": "实践一、\n我的 github page 仓库，有一个 main 分支\n我本地新建了一个仓库，想把内容完全覆盖掉仓库\n初始化本地仓库 git init ，初始化本地 git 仓库\n1 git init 添加远程仓库链接 将新文件夹与GitHub上的远程仓库关联。替换为您实际的远程仓库URL。\n1 git remote add origin 将文件夹内容添加到 Git，并提交 1 2 git add . git commit -m \"Replace repository content\" 强制推送到 Github 使用--force或-f选项强制推送本地内容到远程仓库。这会覆盖远程仓库的所有内容，请确保您已备份重要数据。\n1 git push origin master --force 请注意，使用--force会覆盖远程仓库的历史记录，因此需要谨慎使用。\n解释下强制推送\n在 Git 中，git push origin master --force 这条命令用于将本地分支的更改强制推送到远程仓库。以下是命令中各部分的含义：\npush: 这是 Git 的一个命令，用于将本地仓库的更改推送（上传）到远程仓库。 origin: 这是远程仓库的默认名称，通常在克隆或远程关联时被使用。它只是一个指向实际远程仓库URL的别名。如果你将某个远程仓库关联到本地仓库时使用了不同名称，那么你需要用相应的名称替换掉 origin。 master: 在早期版本的 Git 中，master 是默认的主分支名称。近年来，Git 开始使用 main 作为新仓库的默认主分支名称。如果你的仓库使用的是 main，那么这部分应改为 main。具体分支名称应根据仓库实际情况调整。 --force: 该选项强制执行推送，即使这会使远程仓库的历史记录发生不一致的变化。使用强制推送会覆盖远程仓库中当前的分支历史记录，因此应该谨慎使用，确保不影响他人或数据丢失。 总之，git push origin master --force 将会强制把本地的 master 分支推送到远程仓库的 master 分支上，可能会覆盖掉远程分支的现有提交记录。在开始使用之前确保你理解其潜在的风险和影响。\n修改分支远程仓库名称\n使用以下命令将远程仓库的名称从 main 更改为 origin：\n1 git remote rename main origin 验证更改是否成功，运行以下命令查看远程仓库列表及其 URL：\n1 git remote -v 触发 page 更新\n",
+  "wordCount" : "773",
+  "inLanguage": "zh",
+  "datePublished": "2024-10-22T21:29:41+08:00",
+  "dateModified": "2024-10-22T21:29:41+08:00",
+  "author":[{
+    "@type": "Person",
+    "name": "kai"
+  }],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://wangkai26.github.io/posts/git/git%E5%AE%9E%E8%B7%B5/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kai's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://wangkai26.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://wangkai26.github.io/" accesskey="h" title="Kai&#39;s Blog (Alt + H)">Kai&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://wangkai26.github.io/search" title="🔍搜索 (Alt &#43; /)" accesskey=/>
+                    <span>🔍搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://wangkai26.github.io/" title="🏠主页">
+                    <span>🏠主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://wangkai26.github.io/posts" title="📚文章">
+                    <span>📚文章</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://wangkai26.github.io/archives/" title="⏱时间轴">
+                    <span>⏱时间轴</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://wangkai26.github.io/tags" title="🔖标签">
+                    <span>🔖标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://wangkai26.github.io/about" title="🙋🏻‍♂️关于">
+                    <span>🙋🏻‍♂️关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://wangkai26.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://wangkai26.github.io/posts/">Posts</a>&nbsp;»&nbsp;<a href="https://wangkai26.github.io/posts/git/">git</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Git实践
+    </h1>
+    <div class="post-meta"><span title='2024-10-22 21:29:41 +0800 CST'>2024-10-22</span>&nbsp;·&nbsp;2 分钟&nbsp;·&nbsp;kai
+
+</div>
+  </header> 
+  <div class="post-content"><p>实践一、</p>
+<p>我的 github page 仓库，有一个 main 分支</p>
+<p>我本地新建了一个仓库，想把内容完全覆盖掉仓库</p>
+<ol>
+<li>初始化本地仓库</li>
+</ol>
+<p><code>git init</code> ，初始化本地 git 仓库</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git init
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>添加远程仓库链接</li>
+</ol>
+<p>将新文件夹与GitHub上的远程仓库关联。替换<code>&lt;your-repo-url&gt;</code>为您实际的远程仓库URL。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git remote add origin &lt;your-repo-url&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>将文件夹内容添加到 Git，并提交</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git add .
+</span></span><span class="line"><span class="cl">git commit -m <span class="s2">&#34;Replace repository content&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>强制推送到 Github</li>
+</ol>
+<p>使用<code>--force</code>或<code>-f</code>选项强制推送本地内容到远程仓库。这会覆盖远程仓库的所有内容，请确保您已备份重要数据。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git push origin master --force
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>请注意，使用<code>--force</code>会覆盖远程仓库的历史记录，因此需要谨慎使用。</p>
+<p>解释下强制推送</p>
+<p>在 Git 中，<code>git push origin master --force</code> 这条命令用于将本地分支的更改强制推送到远程仓库。以下是命令中各部分的含义：</p>
+<ol>
+<li><strong><code>push</code></strong>: 这是 Git 的一个命令，用于将本地仓库的更改推送（上传）到远程仓库。</li>
+<li><strong><code>origin</code></strong>: 这是远程仓库的默认名称，通常在克隆或远程关联时被使用。它只是一个指向实际远程仓库URL的别名。如果你将某个远程仓库关联到本地仓库时使用了不同名称，那么你需要用相应的名称替换掉 <code>origin</code>。</li>
+<li><strong><code>master</code></strong>: 在早期版本的 Git 中，<code>master</code> 是默认的主分支名称。近年来，Git 开始使用 <code>main</code> 作为新仓库的默认主分支名称。如果你的仓库使用的是 <code>main</code>，那么这部分应改为 <code>main</code>。具体分支名称应根据仓库实际情况调整。</li>
+<li><strong><code>--force</code></strong>: 该选项强制执行推送，即使这会使远程仓库的历史记录发生不一致的变化。使用强制推送会覆盖远程仓库中当前的分支历史记录，因此应该谨慎使用，确保不影响他人或数据丢失。</li>
+</ol>
+<p>总之，<code>git push origin master --force</code> 将会强制把本地的 <code>master</code> 分支推送到远程仓库的 <code>master</code> 分支上，可能会覆盖掉远程分支的现有提交记录。在开始使用之前确保你理解其潜在的风险和影响。</p>
+<p>修改分支远程仓库名称</p>
+<p>使用以下命令将远程仓库的名称从 <code>main</code> 更改为 <code>origin</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git remote rename main origin
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>验证更改是否成功，运行以下命令查看远程仓库列表及其 URL：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git remote -v
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>触发 page 更新</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://wangkai26.github.io/tags/%E6%A0%87%E7%AD%BE1/">标签1</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://wangkai26.github.io/posts/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>常用命令</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="https://wangkai26.github.io/">Kai&#39;s Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

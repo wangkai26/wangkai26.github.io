@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>🏖 生活 on Kai&#39;s Blog</title>
+    <link>https://wangkai26.github.io/posts/life/</link>
+    <description>Recent content in 🏖 生活 on Kai&#39;s Blog</description>
+    <generator>Hugo -- 0.131.0</generator>
+    <language>zh</language>
+    <lastBuildDate>Sat, 19 Oct 2024 15:40:50 +0800</lastBuildDate>
+    <atom:link href="https://wangkai26.github.io/posts/life/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>魔方</title>
+      <link>https://wangkai26.github.io/posts/life/%E9%AD%94%E6%96%B9/</link>
+      <pubDate>Sat, 19 Oct 2024 15:40:50 +0800</pubDate>
+      <guid>https://wangkai26.github.io/posts/life/%E9%AD%94%E6%96%B9/</guid>
+      <description>拼魔方 三阶魔方基础知识： 结构： 三阶魔方有六个面，每面有九个小方块，一共54个小方块。 每个面都可以用一种颜色表示，传统上有白、黄、红、橙、绿、</description>
+    </item>
+    <item>
+      <title>Gg</title>
+      <link>https://wangkai26.github.io/posts/life/life_second/gg/</link>
+      <pubDate>Mon, 16 Sep 2024 21:19:53 +0800</pubDate>
+      <guid>https://wangkai26.github.io/posts/life/life_second/gg/</guid>
+      <description>gg 哈哈哈</description>
+    </item>
+    <item>
+      <title>Life_demo2</title>
+      <link>https://wangkai26.github.io/posts/life/life_demo2/</link>
+      <pubDate>Mon, 16 Sep 2024 21:16:58 +0800</pubDate>
+      <guid>https://wangkai26.github.io/posts/life/life_demo2/</guid>
+      <description>hello life module</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://wangkai26.github.io/posts/life/life_demo1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://wangkai26.github.io/posts/life/life_demo1/</guid>
+      <description>asdf</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>协议与数据通信 on Kai&#39;s Blog</title>
+    <link>https://wangkai26.github.io/posts/%E5%8D%8F%E8%AE%AE%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/</link>
+    <description>Recent content in 协议与数据通信 on Kai&#39;s Blog</description>
+    <generator>Hugo -- 0.131.0</generator>
+    <language>zh</language>
+    <lastBuildDate>Sat, 19 Oct 2024 17:13:40 +0800</lastBuildDate>
+    <atom:link href="https://wangkai26.github.io/posts/%E5%8D%8F%E8%AE%AE%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Protobuf理论</title>
+      <link>https://wangkai26.github.io/posts/%E5%8D%8F%E8%AE%AE%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/protobuf%E7%90%86%E8%AE%BA/</link>
+      <pubDate>Sat, 19 Oct 2024 17:13:40 +0800</pubDate>
+      <guid>https://wangkai26.github.io/posts/%E5%8D%8F%E8%AE%AE%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/protobuf%E7%90%86%E8%AE%BA/</guid>
+      <description>听起来是个不错的选择！“协议与数据通信”这个文件夹名非常直观，可以很好地容纳未来与数据格式、协议、通信机制相关的文章。如果你考虑到后续可能会</description>
+    </item>
+  </channel>
+</rss>

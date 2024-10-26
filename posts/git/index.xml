@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>git on Kai&#39;s Blog</title>
+    <link>https://wangkai26.github.io/posts/git/</link>
+    <description>Recent content in git on Kai&#39;s Blog</description>
+    <generator>Hugo -- 0.131.0</generator>
+    <language>zh</language>
+    <lastBuildDate>Tue, 22 Oct 2024 21:29:41 +0800</lastBuildDate>
+    <atom:link href="https://wangkai26.github.io/posts/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git实践</title>
+      <link>https://wangkai26.github.io/posts/git/git%E5%AE%9E%E8%B7%B5/</link>
+      <pubDate>Tue, 22 Oct 2024 21:29:41 +0800</pubDate>
+      <guid>https://wangkai26.github.io/posts/git/git%E5%AE%9E%E8%B7%B5/</guid>
+      <description>实践一、 我的 github page 仓库，有一个 main 分支 我本地新建了一个仓库，想把内容完全覆盖掉仓库 初始化本地仓库 git init ，初始化本地 git 仓库 1 git init 添加远程仓库链接 将新</description>
+    </item>
+  </channel>
+</rss>

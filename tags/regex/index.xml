@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Regex on Kai&#39;s Blog</title>
+    <link>https://wangkai26.github.io/tags/regex/</link>
+    <description>Recent content in Regex on Kai&#39;s Blog</description>
+    <generator>Hugo -- 0.131.0</generator>
+    <language>zh</language>
+    <lastBuildDate>Mon, 16 Sep 2024 21:37:21 +0800</lastBuildDate>
+    <atom:link href="https://wangkai26.github.io/tags/regex/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Principles</title>
+      <link>https://wangkai26.github.io/posts/tech/regex/principles/</link>
+      <pubDate>Mon, 16 Sep 2024 21:37:21 +0800</pubDate>
+      <guid>https://wangkai26.github.io/posts/tech/regex/principles/</guid>
+      <description>正则表达式(Regular Expression)是一种文本模式，包括普通字符（例如，a 到 z 之间的字母）和特殊字符（称为&amp;quot;元字符&amp;q</description>
+    </item>
+  </channel>
+</rss>
